@@ -16,8 +16,9 @@ model = SentenceTransformer('all-mpnet-base-v2')
 api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=api_key)
 
-# Ruta al archivo CSV (deberás asegurarte de que el archivo esté accesible)
-datafile_path = "/embeddings/1000_embeddings_store.csv"  # Asegúrate de subir este archivo a tu repositorio o usar almacenamiento adecuado
+# Ruta al archivo CSV (usando ruta relativa)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+datafile_path = os.path.join(base_dir, '..', 'embeddings', '1000_embeddings_store.csv')
 
 def str_to_array(s):
     """Convierte una cadena de texto de embedding a un array numpy."""
@@ -27,10 +28,13 @@ def str_to_array(s):
         return np.array([])
 
 # Cargar el CSV y convertir los embeddings
-corpus_df = pd.read_csv(datafile_path)
-corpus_df['embedding'] = corpus_df['embeddings_str'].apply(str_to_array)
-
-print(f"Cargados {len(corpus_df)} documentos con embeddings.")
+try:
+    corpus_df = pd.read_csv(datafile_path)
+    corpus_df['embedding'] = corpus_df['embeddings_str'].apply(str_to_array)
+    print(f"Cargados {len(corpus_df)} documentos con embeddings.")
+except FileNotFoundError:
+    print(f"Error: El archivo {datafile_path} no fue encontrado.")
+    corpus_df = pd.DataFrame(columns=['text', 'embeddings_str', 'embedding'])
 
 def obtener_embedding(texto):
     """Obtiene el embedding de un texto usando SBERT."""
@@ -58,7 +62,7 @@ def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes):
     prompt = f"""
 Eres un asistente virtual para el proyecto de análisis de reseñas de productos en Amazon. Tu objetivo es transformar el análisis de reseñas en una herramienta estratégica para el desarrollo de productos y la inteligencia de mercado. Proporcionas información precisa y relevante basada en las reseñas de productos, beneficiando a empresas B2B en España, como fabricantes, vendedores en Amazon, agencias de marketing digital, plataformas de e-commerce e inversores.
 
-Debes utilizar las reseñas de productos de Amazon disponibles en el corpus, así como la base de datos de embeddings ubicada en `/content/drive/My Drive/001_AI_MASTER/TFM_grupo2_Master_Inesdi/9. Notebooks/data_sets_MVP/Embeddings/1000_embeddings_store.csv` para obtener información adicional.
+Debes utilizar las reseñas de productos de Amazon disponibles en el corpus, así como la base de datos de embeddings ubicada en '{datafile_path}' para obtener información adicional.
 
 Eres capaz de responder en diferentes idiomas y, si no conoces el idioma del usuario, debes traducir la entrada y la salida al idioma que te han preguntado.
 
