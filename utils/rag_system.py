@@ -17,7 +17,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=api_key)
 
 # Ruta al archivo CSV (deberás asegurarte de que el archivo esté accesible)
-datafile_path = "1000_embeddings_store.csv"  # Asegúrate de subir este archivo a tu repositorio o usar almacenamiento adecuado
+datafile_path = "/embeddings/1000_embeddings_store.csv"  # Asegúrate de subir este archivo a tu repositorio o usar almacenamiento adecuado
 
 def str_to_array(s):
     """Convierte una cadena de texto de embedding a un array numpy."""
