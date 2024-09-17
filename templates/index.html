@@ -1,0 +1,27 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PRODUKTIVITY AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PRODUKTIVITY AI</h1>
+        <p>¡Descubre PRODUKTIVITY AI, tu asistente inteligente para optimizar la creación y el Discovery de nuevos productos! Obtén respuestas rápidas y precisas basadas en datos relevantes de reseñas seleccionadas y validadas que te permiten tomar decisiones informadas al instante. Simplifica la búsqueda de información y accede a insights estratégicos que potencian tu productividad, todo con una simple pregunta. ¡Transforma la manera en que trabajas con PRODUKTIVITY AI!</p>
+        
+        <div id="chat-box">
+            <!-- Mensajes del chat aparecerán aquí -->
+        </div>
+
+        <form id="chat-form">
+            <input type="text" id="message" name="message" placeholder="Escribe tu mensaje aquí..." autocomplete="off" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

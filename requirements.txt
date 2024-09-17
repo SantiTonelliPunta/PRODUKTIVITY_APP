@@ -1,0 +1,9 @@
+Flask
+gunicorn
+sentence-transformers
+openai
+scikit-learn
+numpy
+pandas
+ast
+python-dotenv
