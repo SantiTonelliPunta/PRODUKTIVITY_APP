@@ -1,9 +1,8 @@
-Flask==2.3.2
-gunicorn==23.0.0
-sentence-transformers==3.1.0
-openai==1.46.0
-scikit-learn==1.5.2
-numpy==2.1.1
-pandas==2.2.2
-streamlit==1.30.0
-packaging<24
+Flask
+gunicorn
+sentence-transformers
+openai
+scikit-learn
+numpy
+pandas
+streamlit
