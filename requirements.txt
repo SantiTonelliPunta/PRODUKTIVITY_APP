@@ -4,6 +4,4 @@ sentence-transformers
 openai
 scikit-learn
 numpy
-pandas
-ast
-python-dotenv
+pandas 
