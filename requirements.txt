@@ -6,4 +6,3 @@ scikit-learn==1.5.2
 numpy==2.1.1
 pandas==2.2.2
 streamlit==1.30.0
-packaging<24
