@@ -1,8 +1,15 @@
 # app.py
 
 from flask import Flask, render_template, request, jsonify
-from utils.rag_system import recuperar_documentos, generar_respuesta_y_analizar_sentimiento
+from utils.rag_system import procesar_consulta
+from dotenv import load_dotenv
 import os
+
+# Cargar variables de entorno desde .env
+load_dotenv()
+
+# Configurar el entorno para los tokenizers
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 app = Flask(__name__)
 
@@ -18,11 +25,8 @@ def chat():
     if not message:
         return jsonify({"error": "No se proporcionó ningún mensaje."}), 400
 
-    # Recuperar documentos relevantes
-    documentos_relevantes = recuperar_documentos(message, corpus_df=corpus_df, top_n=5)
-    
-    # Generar respuesta y analizar sentimiento
-    respuesta = generar_respuesta_y_analizar_sentimiento(message, documentos_relevantes)
+    # Procesar la consulta
+    respuesta = procesar_consulta(message)
     
     return jsonify({"respuesta": respuesta})
 
