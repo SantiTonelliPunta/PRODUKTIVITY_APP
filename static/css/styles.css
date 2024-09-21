@@ -1,83 +1,140 @@
 /* static/css/styles.css */
 
+:root {
+    --primary-color: #081920;
+    --text-color: #4d4d4d;
+    --background-color: #f3f0eb;
+    --chat-bg: #fff;
+    --chat-user: #f8f8f8;
+    --chat-bot: #e8e8e8;
+    --placeholder-color: #c5c5c5;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
-    width: 60%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-    background: #fff;
-    margin-top: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 17px; /* Reduced by 15% from 20px */
+    background-color: var(--background-color);
 }
 
-h1 {
+header {
     text-align: center;
-    color: #333;
+    padding: 10px 0; /* Reduced from 20px 0 */
+    border-radius: 8.5px 8.5px 0 0; /* Reduced by 15% from 10px 10px 0 0 */
+    background-color: var(--background-color);
 }
 
-#chat-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    height: 400px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-    background-color: #fafafa;
+.logo {
+    width: 490px;
+    height: 103px; /* Reduced by 15% from 122px */
+    display: block;
+    margin: 20px auto 10px; /* Reduced top margin from 40px to 20px, added bottom margin */
+    object-fit: contain;
+}
+
+p {
+    color: var(--text-color);
+}
+
+.intro {
+    background-color: var(--chat-bg);
+    padding: 17px; /* Reduced by 15% from 20px */
+    border-radius: 8.5px; /* Reduced by 15% from 10px */
+    margin-bottom: 17px; /* Reduced by 15% from 20px */
+    box-shadow: 0 1.7px 4.25px rgba(0,0,0,0.1); /* Reduced by 15% */
+}
+
+.chat-box {
+    background-color: var(--chat-bg);
+    border-radius: 8.5px; /* Reduced by 15% from 10px */
+    padding: 17px; /* Reduced by 15% from 20px */
+    height: 238px; /* Reduced by 15% from 280px */
+    overflow-y: auto;
+    margin-bottom: 17px; /* Reduced by 15% from 20px */
+    box-shadow: 0 1.7px 4.25px rgba(0,0,0,0.1); /* Reduced by 15% */
 }
 
 .message {
-    margin-bottom: 15px;
-}
-
-.user-message {
-    text-align: right;
-}
-
-.assistant-message {
-    text-align: left;
-}
-
-.message p {
-    display: inline-block;
-    padding: 10px;
-    border-radius: 10px;
+    margin-bottom: 12.75px; /* Reduced by 15% from 15px */
+    padding: 8.5px; /* Reduced by 15% from 10px */
+    border-radius: 8.5px; /* Reduced by 15% from 10px */
     max-width: 80%;
 }
 
-.user-message p {
-    background-color: #0084ff;
-    color: #fff;
+.user-message {
+    background-color: var(--chat-user);
+    align-self: flex-end;
+    margin-left: auto;
 }
 
-.assistant-message p {
-    background-color: #e5e5ea;
-    color: #000;
+.assistant-message {
+    background-color: var(--chat-bot);
+    align-self: flex-start;
 }
 
-#chat-form {
+.chat-form {
     display: flex;
+    gap: 8.5px; /* Reduced by 15% from 10px */
 }
 
-#message {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
+.chat-input {
+    flex-grow: 1;
+    padding: 8.5px; /* Reduced by 15% from 10px */
+    border: 1px solid #ddd;
+    border-radius: 4.25px; /* Reduced by 15% from 5px */
+    font-size: 13.6px; /* Reduced by 15% from 16px */
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #0084ff;
-    color: #fff;
+.chat-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.chat-submit {
+    padding: 8.5px 17px; /* Reduced by 15% from 10px 20px */
+    background-color: var(--primary-color);
+    color: #ffffff;
     border: none;
+    border-radius: 4.25px; /* Reduced by 15% from 5px */
     cursor: pointer;
+    font-size: 13.6px; /* Reduced by 15% from 16px */
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #005bb5;
+.chat-submit:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 8.5px; /* Reduced by 15% from 10px */
+    }
+
+    .chat-box {
+        height: 178.5px; /* Reduced by 15% from 210px */
+    }
+
+/* ... (other styles remain the same) ... */
+
+.logo {
+    width: 490px;
+    height: 103px; /* Reduced by 15% from 122px */
+    display: block;
+    margin: 10px auto 5px; /* Reduced bottom margin from 10px to 5px */
+    object-fit: contain;
+}
+
+.user-message {
+    background-color: var(--chat-user);
+    align-self: flex-end;
+    margin-left: auto;
 }

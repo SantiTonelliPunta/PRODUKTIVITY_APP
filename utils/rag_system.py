@@ -1,91 +1,160 @@
-# utils/rag_system.py
-
+import os
 import ast
+import time
+import logging
+import aiohttp
+import asyncio
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
-from sklearn.preprocessing import normalize
-from sklearn.metrics.pairwise import cosine_similarity
-from openai import OpenAI
-import os
-import time
-import logging
 from functools import lru_cache
+from sklearn.preprocessing import normalize
+from sklearn.metrics import precision_score, recall_score, ndcg_score
+from sklearn.metrics.pairwise import cosine_similarity
 
-# Configurar logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Inicializar el modelo SBERT
+# Cargar el modelo SBERT solo una vez
+start_time = time.time()
 model = SentenceTransformer('all-mpnet-base-v2')
+logging.info(
+    f"Modelo SBERT cargado en {time.time() - start_time:.2f} segundos")
 
-# Configurar el cliente de OpenAI usando variables de entorno
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+# Configurar la clave de API de OpenAI
+api_key = os.getenv('OPENAI_API_KEY')
 
-# Ruta al archivo CSV (usando ruta relativa)
+# Ruta al archivo CSV
 base_dir = os.path.dirname(os.path.abspath(__file__))
-datafile_path = os.path.join(base_dir, '..', 'embeddings', '1000_embeddings_store.csv')
+datafile_path = os.path.join(base_dir, '..', 'embeddings',
+                             '1000_embeddings_store.csv')
+
 
 def str_to_array(s):
-    """Convierte una cadena de texto de embedding a un array numpy."""
     try:
         return np.array(ast.literal_eval(s))
     except:
         return np.array([])
 
-# Variable global para almacenar los datos
+
 corpus_df = None
+
 
 def load_data():
     global corpus_df
     if corpus_df is None:
         start_time = time.time()
-        try:
-            corpus_df = pd.read_csv(datafile_path)
-            corpus_df['embedding'] = corpus_df['embeddings_str'].apply(str_to_array)
-            logging.info(f"Cargados {len(corpus_df)} documentos con embeddings en {time.time() - start_time:.2f} segundos.")
-        except FileNotFoundError:
-            logging.error(f"Error: El archivo {datafile_path} no fue encontrado.")
-            corpus_df = pd.DataFrame(columns=['text', 'embeddings_str', 'embedding'])
+        corpus_df = pd.read_csv(datafile_path)
+        corpus_df['embedding'] = corpus_df['embeddings_str'].apply(
+            str_to_array)
+        logging.info(
+            f"Cargados {len(corpus_df)} documentos con embeddings en {time.time() - start_time:.2f} segundos."
+        )
 
-# Cargar datos al inicio
+
 load_data()
+
 
 @lru_cache(maxsize=100)
 def obtener_embedding(texto):
-    """Obtiene el embedding de un texto usando SBERT con caché."""
-    return tuple(model.encode([texto])[0])  # Convertir a tupla para que sea hashable
+    return tuple(model.encode([texto])[0])
+
 
 def recuperar_documentos(query, top_n=5):
-    global corpus_df
     start_time = time.time()
     query_embedding = obtener_embedding(query)
-    
-    corpus_embeddings = np.vstack(corpus_df['embedding'].values)
 
-    # Normalizar los embeddings
+    corpus_embeddings = np.vstack(corpus_df['embedding'].values)
     query_embedding = normalize([query_embedding])[0]
     corpus_embeddings = normalize(corpus_embeddings)
 
     similitudes = cosine_similarity([query_embedding], corpus_embeddings)[0]
     corpus_df['similaridad'] = similitudes
-    documentos_recuperados = corpus_df.sort_values(by='similaridad', ascending=False).head(top_n)
+    documentos_recuperados = corpus_df.sort_values(by='similaridad',
+                                                   ascending=False).head(top_n)
 
-    logging.info(f"Recuperación de documentos completada en {time.time() - start_time:.2f} segundos.")
-    return documentos_recuperados
+    logging.info(
+        f"Recuperación de documentos completada en {time.time() - start_time:.2f} segundos."
+    )
+    return documentos_recuperados, similitudes
 
-@lru_cache(maxsize=100)
-def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_tuple):
+
+def calcular_precision(y_true, y_pred):
+    precision = precision_score(y_true, y_pred, average='binary')
+    logging.info(f"Precisión calculada: {precision:.4f}")
+    return precision
+
+
+def calcular_ndcg(y_true, y_score):
+    ndcg = ndcg_score([y_true], [y_score])
+    logging.info(f"NDCG calculado: {ndcg:.4f}")
+    return ndcg
+
+
+def calcular_recall(y_true, y_pred):
+    recall = recall_score(y_true, y_pred, average='binary')
+    logging.info(f"Recall calculado: {recall:.4f}")
+    return recall
+
+
+def calcular_cosine_similarity(embedding1, embedding2):
+    cosine_sim = cosine_similarity([embedding1], [embedding2])[0][0]
+    logging.info(f"Cosine Similarity calculado: {cosine_sim:.4f}")
+    return cosine_sim
+
+
+def evaluar_query(query, ground_truth):
+    logging.info(f"Evaluando query: {query} con ground_truth: {ground_truth}")
+
+    documentos_recuperados, similitudes = recuperar_documentos(query)
+    logging.info(f"Documentos recuperados: {documentos_recuperados}")
+
+    ground_truth_embeddings = [
+        obtener_embedding(text) for text in ground_truth
+    ]
+    y_true = [1 if text in ground_truth else 0 for text in corpus_df['text']]
+    y_pred = [
+        1 if df.text in documentos_recuperados['text'].values else 0
+        for df in corpus_df.itertuples()
+    ]
+
+    logging.info(f"y_true: {y_true}")
+    logging.info(f"y_pred: {y_pred}")
+
+    precision = calcular_precision(y_true, y_pred)
+    ndcg = calcular_ndcg(y_true, similitudes)
+    recall = calcular_recall(y_true, y_pred)
+    coherence = np.mean([
+        calcular_cosine_similarity(obtener_embedding(query), gt_emb)
+        for gt_emb in ground_truth_embeddings
+    ])
+
+    # Loggear todas las métricas
+    logging.info(
+        f"Evaluación de Query - Precisión: {precision:.4f}, NDCG: {ndcg:.4f}, Recall: {recall:.4f}, Coherencia: {coherence:.4f}"
+    )
+
+    return {
+        "precision": precision,
+        "ndcg": ndcg,
+        "recall": recall,
+        "coherence": coherence
+    }
+
+
+async def generar_respuesta_y_analizar_sentimiento(
+        query, documentos_relevantes_tuple):
     start_time = time.time()
-    
+
     documentos_relevantes = list(documentos_relevantes_tuple)
     contexto = "\n".join(documentos_relevantes)
 
-    # Verificar si es un saludo simple
-    saludos = ["hola", "hello", "hi", "buenos días", "buenas tardes", "buenas noches"]
+    saludos = [
+        "hola", "hello", "hi", "buenos días", "buenas tardes", "buenas noches"
+    ]
     if query.lower().strip() in saludos:
         respuesta = "Hola, ¿en qué puedo ayudarte hoy con respecto a la búsqueda y análisis de productos?"
-        tiempo_total = time.time() - start_time
-        return respuesta, tiempo_total
+        return respuesta, time.time() - start_time
 
     prompt = f"""
     Eres un asistente virtual para el proyecto de análisis de reseñas de productos en Amazon. Tu objetivo es transformar el análisis de reseñas en una herramienta estratégica para el desarrollo de productos y la inteligencia de mercado. Proporcionas información precisa y relevante basada en las reseñas de productos, beneficiando a empresas B2B en España, como fabricantes, vendedores en Amazon, agencias de marketing digital, plataformas de e-commerce e inversores.
@@ -119,42 +188,91 @@ def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_tuple)
     2. Analiza el sentimiento general de las reseñas proporcionadas y proporciona un resumen. Indica si las reseñas tienen un sentimiento positivo, negativo o neutral, y proporciona una puntuación de polaridad para reflejar la intensidad del sentimiento.
     """
 
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_key}',
+    }
+
+    json_data = {
+        'model':
+        'gpt-3.5-turbo',
+        'messages': [{
+            "role":
+            "system",
+            "content":
+            "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."
+        }, {
+            "role": "user",
+            "content": prompt
+        }],
+    }
+
     try:
         respuesta_start_time = time.time()
-        respuesta = client.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."},
-                {"role": "user", "content": prompt}
-            ]
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                    'https://api.openai.com/v1/chat/completions',
+                    headers=headers,
+                    json=json_data) as resp:
+                respuesta = await resp.json()
+        api_duration = time.time() - respuesta_start_time
+        respuesta_texto = respuesta['choices'][0]['message']['content']
+        total_duration = time.time() - start_time
+        logging.info(
+            f"Tiempo de la llamada a la API de OpenAI: {api_duration:.2f} segundos"
         )
-        respuesta_texto = respuesta.choices[0].message.content
-        tiempo_total = time.time() - start_time
-        return respuesta_texto, tiempo_total
+        return respuesta_texto, total_duration
     except Exception as e:
         logging.error(f"Error al generar la respuesta: {str(e)}")
-        return f"Error al generar la respuesta: {str(e)}", time.time() - start_time
+        return f"Error al generar la respuesta: {str(e)}", time.time(
+        ) - start_time
 
-def procesar_consulta(query):
+
+async def procesar_consulta_async(query):
     logging.info(f"Iniciando procesamiento de consulta: {query}")
     try:
-        if query.lower().strip() in ["hola", "hello", "hi", "buenos días", "buenas tardes", "buenas noches"]:
+        if query.lower().strip() in [
+                "hola", "hello", "hi", "buenos días", "buenas tardes",
+                "buenas noches"
+        ]:
             logging.info("Detectado saludo simple")
-            respuesta, tiempo = generar_respuesta_y_analizar_sentimiento(query, tuple([]))
+            respuesta, tiempo = await generar_respuesta_y_analizar_sentimiento(
+                query, tuple([]))
             return respuesta, tiempo
 
         logging.info("Recuperando documentos relevantes")
-        documentos_relevantes = recuperar_documentos(query)
+        start = time.time()
+        documentos_relevantes, _ = recuperar_documentos(query)
+        doc_retrieve_time = time.time() - start
+        logging.info(
+            f"Tiempo en recuperar documentos: {doc_retrieve_time:.2f} segundos"
+        )
+
         if documentos_relevantes.empty:
-            logging.warning("No se encontraron documentos relevantes para la consulta.")
+            logging.warning(
+                "No se encontraron documentos relevantes para la consulta.")
             return "Lo siento, no pude encontrar información relevante para tu consulta.", 0
 
-        documentos_relevantes_tuple = tuple(documentos_relevantes['text'].tolist())
-        logging.info(f"Generando respuesta con {len(documentos_relevantes_tuple)} documentos relevantes")
-        respuesta, tiempo = generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_tuple)
+        documentos_relevantes_tuple = tuple(
+            documentos_relevantes['text'].tolist())
+        logging.info(
+            f"Generando respuesta con {len(documentos_relevantes_tuple)} documentos relevantes"
+        )
+        start = time.time()
+        respuesta, tiempo = await generar_respuesta_y_analizar_sentimiento(
+            query, documentos_relevantes_tuple)
+        total_time = time.time() - start
+        logging.info(
+            f"Tiempo total para generar respuesta: {total_time:.2f} segundos")
         return respuesta, tiempo
     except Exception as e:
         logging.error(f"Error en procesar_consulta: {str(e)}", exc_info=True)
         return f"Lo siento, ocurrió un error al procesar tu consulta: {str(e)}", 0
-# Exportar funciones necesarias para app.py
-__all__ = ['procesar_consulta']
+
+
+def procesar_consulta(query):
+    return asyncio.run(procesar_consulta_async(query))
+
+
+# Exportar funciones necesarias para main.py
+__all__ = ['procesar_consulta', 'evaluar_query']
