@@ -6,3 +6,7 @@ scikit-learn
 numpy
 pandas
 streamlit
+aiohttp
+python-dotenv
+rouge-score
+nltk

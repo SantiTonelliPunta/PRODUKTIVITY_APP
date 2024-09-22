@@ -11,6 +11,7 @@ from functools import lru_cache
 from sklearn.preprocessing import normalize
 from sklearn.metrics import precision_score, recall_score, ndcg_score
 from sklearn.metrics.pairwise import cosine_similarity
+from utils.evaluation_metrics import evaluate_and_save_metrics
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -29,16 +30,13 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 datafile_path = os.path.join(base_dir, '..', 'embeddings',
                              '1000_embeddings_store.csv')
 
-
 def str_to_array(s):
     try:
         return np.array(ast.literal_eval(s))
     except:
         return np.array([])
 
-
 corpus_df = None
-
 
 def load_data():
     global corpus_df
@@ -51,14 +49,11 @@ def load_data():
             f"Cargados {len(corpus_df)} documentos con embeddings en {time.time() - start_time:.2f} segundos."
         )
 
-
 load_data()
-
 
 @lru_cache(maxsize=100)
 def obtener_embedding(texto):
     return tuple(model.encode([texto])[0])
-
 
 def recuperar_documentos(query, top_n=5):
     start_time = time.time()
@@ -78,30 +73,25 @@ def recuperar_documentos(query, top_n=5):
     )
     return documentos_recuperados, similitudes
 
-
 def calcular_precision(y_true, y_pred):
     precision = precision_score(y_true, y_pred, average='binary')
     logging.info(f"Precisión calculada: {precision:.4f}")
     return precision
-
 
 def calcular_ndcg(y_true, y_score):
     ndcg = ndcg_score([y_true], [y_score])
     logging.info(f"NDCG calculado: {ndcg:.4f}")
     return ndcg
 
-
 def calcular_recall(y_true, y_pred):
     recall = recall_score(y_true, y_pred, average='binary')
     logging.info(f"Recall calculado: {recall:.4f}")
     return recall
 
-
 def calcular_cosine_similarity(embedding1, embedding2):
     cosine_sim = cosine_similarity([embedding1], [embedding2])[0][0]
     logging.info(f"Cosine Similarity calculado: {cosine_sim:.4f}")
     return cosine_sim
-
 
 def evaluar_query(query, ground_truth):
     logging.info(f"Evaluando query: {query} con ground_truth: {ground_truth}")
@@ -141,9 +131,7 @@ def evaluar_query(query, ground_truth):
         "coherence": coherence
     }
 
-
-async def generar_respuesta_y_analizar_sentimiento(
-        query, documentos_relevantes_tuple):
+async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_tuple):
     start_time = time.time()
 
     documentos_relevantes = list(documentos_relevantes_tuple)
@@ -154,7 +142,9 @@ async def generar_respuesta_y_analizar_sentimiento(
     ]
     if query.lower().strip() in saludos:
         respuesta = "Hola, ¿en qué puedo ayudarte hoy con respecto a la búsqueda y análisis de productos?"
-        return respuesta, time.time() - start_time
+        total_duration = time.time() - start_time
+        evaluate_and_save_metrics(query, respuesta, documentos_relevantes, total_duration)
+        return format_response(respuesta, total_duration), total_duration
 
     prompt = f"""
     Eres un asistente virtual para el proyecto de análisis de reseñas de productos en Amazon. Tu objetivo es transformar el análisis de reseñas en una herramienta estratégica para el desarrollo de productos y la inteligencia de mercado. Proporcionas información precisa y relevante basada en las reseñas de productos, beneficiando a empresas B2B en España, como fabricantes, vendedores en Amazon, agencias de marketing digital, plataformas de e-commerce e inversores.
@@ -164,28 +154,28 @@ async def generar_respuesta_y_analizar_sentimiento(
     Eres capaz de responder en diferentes idiomas y, si no conoces el idioma del usuario, debes traducir la entrada y la salida al idioma que te han preguntado.
 
     Personalización de la comunicación:
-    - Siempre personalizarás la conversación utilizando un tono profesional y experto.
+    - Utiliza un tono profesional y experto.
     - Sé directo y claro; si alguien te solicita información, provee detalles específicos.
-    - Utiliza el nombre del usuario, si es proporcionado, para personalizar la interacción.
     - Usa el corpus de embeddings para buscar información adicional cuando sea necesario.
 
     Tono de Voz y Trato:
-    1. Debe ser formal, pero cordial.
-    2. Sus respuestas deben ser agradables, fluidas, cordiales y con la intención de ayudar
-    3. Debe responder en el idioma que hable el usuario.
+    - Debe ser formal, pero cordial.
+    - Sus respuestas deben ser agradables, fluidas, cordiales y con la intención de ayudar.
+    - Debe responder en el idioma que hable el usuario.
 
     Restricciones y Limitaciones del Chatbot:
-    1. No puedes citar las fuentes que no sean del corpus de reseñas de Amazon y la base de datos de embeddings especificada.
-    2. No debes mencionar ni promocionar productos o servicios específicos que no estén basados en las reseñas proporcionadas.
-    3. No debes ser irrespetuoso, violento, sexista, y no debes tener comentarios impropios o que hieran los sentimientos de los usuarios.
+    - No puedes citar las fuentes que no sean del corpus de reseñas de Amazon y la base de datos de embeddings especificada.
+    - No debes mencionar ni promocionar productos o servicios específicos que no estén basados en las reseñas proporcionadas.
+    - No debes ser irrespetuoso, violento, sexista, y no debes tener comentarios impropios o que hieran los sentimientos de los usuarios.
+    - No enumeres tus respuestas.
 
     Basándote en la siguiente información:
 
     {contexto}
 
-    1. Responde a la siguiente pregunta: {query}
+    Responde a la siguiente pregunta: {query}
 
-    2. Analiza el sentimiento general de las reseñas proporcionadas y proporciona un resumen. Indica si las reseñas tienen un sentimiento positivo, negativo o neutral, y proporciona una puntuación de polaridad para reflejar la intensidad del sentimiento.
+    Después de tu respuesta, en un nuevo párrafo, analiza el sentimiento general de las reseñas proporcionadas (no de la pregunta del usuario) y proporciona un resumen. Indica si las reseñas tienen un sentimiento positivo, negativo o neutral, y proporciona una puntuación de polaridad para reflejar la intensidad del sentimiento de las reseñas.
     """
 
     headers = {
@@ -194,13 +184,10 @@ async def generar_respuesta_y_analizar_sentimiento(
     }
 
     json_data = {
-        'model':
-        'gpt-3.5-turbo',
+        'model': 'gpt-3.5-turbo',
         'messages': [{
-            "role":
-            "system",
-            "content":
-            "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."
+            "role": "system",
+            "content": "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."
         }, {
             "role": "user",
             "content": prompt
@@ -216,17 +203,35 @@ async def generar_respuesta_y_analizar_sentimiento(
                     json=json_data) as resp:
                 respuesta = await resp.json()
         api_duration = time.time() - respuesta_start_time
-        respuesta_texto = respuesta['choices'][0]['message']['content']
+        
+        # Verificar si la respuesta tiene la estructura esperada
+        if 'choices' in respuesta and len(respuesta['choices']) > 0 and 'message' in respuesta['choices'][0]:
+            respuesta_texto = respuesta['choices'][0]['message']['content']
+        else:
+            raise ValueError("La respuesta de la API no tiene la estructura esperada")
+        
         total_duration = time.time() - start_time
         logging.info(
             f"Tiempo de la llamada a la API de OpenAI: {api_duration:.2f} segundos"
         )
-        return respuesta_texto, total_duration
+        
+        # Evaluamos y guardamos las métricas, incluyendo el tiempo de respuesta
+        evaluate_and_save_metrics(query, respuesta_texto, documentos_relevantes, total_duration)
+        
+        return format_response(respuesta_texto, total_duration), total_duration
     except Exception as e:
         logging.error(f"Error al generar la respuesta: {str(e)}")
-        return f"Error al generar la respuesta: {str(e)}", time.time(
-        ) - start_time
+        error_message = f"Lo siento, ocurrió un error al procesar tu consulta: {str(e)}"
+        total_duration = time.time() - start_time
+        evaluate_and_save_metrics(query, error_message, documentos_relevantes, total_duration)
+        return format_response(error_message, total_duration), total_duration
 
+def format_response(response_text, duration):
+    # Formatear la respuesta sin enumeración
+    formatted_response = f"""<div style="margin-bottom: 20px;">
+    {response_text.strip()}
+</div>"""
+    return formatted_response
 
 async def procesar_consulta_async(query):
     logging.info(f"Iniciando procesamiento de consulta: {query}")
@@ -269,10 +274,17 @@ async def procesar_consulta_async(query):
         logging.error(f"Error en procesar_consulta: {str(e)}", exc_info=True)
         return f"Lo siento, ocurrió un error al procesar tu consulta: {str(e)}", 0
 
-
 def procesar_consulta(query):
     return asyncio.run(procesar_consulta_async(query))
 
-
 # Exportar funciones necesarias para main.py
 __all__ = ['procesar_consulta', 'evaluar_query']
+
+# Código de prueba
+if __name__ == "__main__":
+    print("Probando rag_system.py")
+    query = "¿Cuál es el mejor producto?"
+    resultado, tiempo = procesar_consulta(query)
+    print(f"Consulta: {query}")
+    print(f"Respuesta: {resultado}")
+    print(f"Tiempo de procesamiento: {tiempo} segundos")

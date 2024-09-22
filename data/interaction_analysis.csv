@@ -1,0 +1,25 @@
+# Aqui comienza la evaluacion de las interacciones de los usuarios 
+Interaction Number,Timestamp,MRR,Precision,Cosine Similarity,ROUGE-1,ROUGE-L,BLEU
+1,2024-09-22 14:14:20,0,0.0,0.07943248776279499,0.010362694300518133,0.010362694300518133,5.023388855668308e-232
+1,2024-09-22 14:24:06,0,0.0,0.17731272988159694,0.03092783505154639,0.03092783505154639,5.973849768586386e-232,3.2790839672088623
+1,2024-09-22 14:35:51,hola,"Hola, ¿en qué puedo ayudarte hoy con respecto a la búsqueda y análisis de productos?",0,0.0,0.2011946755849157,0.0,0,0,8.821487426757812e-06
+2,2024-09-22 14:36:08,quiero saber mas de MAc Afee,"1. En relación a MacAfee, es importante destacar que se trata de una conocida empresa de software de seguridad informática que ofrece diferentes soluciones para proteger dispositivos contra virus, malware y otras amenazas en línea. MacAfee es ampliamente reconocido en el mercado por su enfoque en la seguridad de los sistemas informáticos y la protección de la privacidad de los usuarios. En caso de requerir más información específica sobre algún producto o servicio en particular de MacAfee, estaré encantado de brindarte detalles adicionales.
+
+2. Evaluación del sentimiento general de las reseñas proporcionadas:
+- La primera reseña ""no es amigable"" tiene un sentimiento negativo.
+- La segunda reseña ""excelente pura vida"" tiene un sentimiento positivo.
+- La tercera reseña menciona un problema con el pedido y la necesidad de un software específico para Mac, lo cual podría considerarse un sentimiento neutro o incluso negativo por la situación experimentada.
+- La cuarta reseña destaca la preferencia por Microsoft Office y la importancia de su uso en el ámbito educativo, lo cual genera un sentimiento positivo.
+- La quinta reseña menciona problemas al intentar utilizar un software en un Mac y la solución obtenida, lo cual indica un sentimiento negativo por la experiencia vivida.
+
+En resumen, las reseñas proporcionadas presentan variedad en términos de sentimientos, con una combinación de opiniones positivas, negativas y neutras. La polaridad general podría considerarse mixta debido a esta diversidad de emociones expresadas por los usuarios en sus comentarios.",0,0.0,0.13078046272546076,0.022900763358778626,0.022900763358778626,4.628662477364524e-232,5.041765928268433
+1,2024-09-22 14:39:00,hola,0,0.0,0.2011946755849157,0.0,0,0,1.0013580322265625e-05
+2,2024-09-22 14:39:09,amazon,0,0.0,0.14700381335480278,0.01183431952662722,0.01183431952662722,5.277597161146185e-232,3.697145938873291
+1,2024-09-22 14:56:25,hola,0,0.0,0.2011946755849157,0.0,0,0,1.0013580322265625e-05
+1,2024-09-22 15:03:07,hola,0,0.0,0.2011946755849157,0.0,0,0,1.3828277587890625e-05
+1,2024-09-22 15:04:35,hola,0,0.0,0.2011946755849157,0.0,0,0,1.71661376953125e-05
+1,2024-09-22 15:05:54,hola como estas?,0,0.0,0.02275400115500007,0.049180327868852465,0.049180327868852465,5.50443835102825e-232,2.903895139694214
+1,2024-09-22 15:11:38,hola,0,0.0,0.2011946755849157,0.0,0,0,1.6927719116210938e-05
+2,2024-09-22 15:12:54,"Ich habe jahrelang McAfee verwendet und es hat perfekt funktioniert. Ein Freund schlägt vor, zu Norton zu wechseln, aber ich bin nicht sicher. Was sagen die Benutzerbewertungen über Norton im Vergleich zu McAfee? Lohnt es sich wirklich, zu wechseln?",0,0.0,0.049675352338767007,0.04854368932038835,0.038834951456310676,6.792517015680791e-232,4.780663728713989
+1,2024-09-22 15:17:50,hola,0,0.0,0.2011946755849157,0.0,0,0,8.106231689453125e-06
+2,2024-09-22 15:18:01,si quiero sabe mas de amazon,0,0.0,0.2036413104165286,0.010152284263959392,0.010152284263959392,5.0306744279006446e-232,3.529386043548584
