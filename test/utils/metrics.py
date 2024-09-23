@@ -1,26 +1,19 @@
-
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from rouge_score import rouge_scorer
 
-# Función para calcular Cosine Similarity entre diferentes embeddings
 def cosine_similarity_score(embedding1, embedding2):
     score = cosine_similarity([embedding1], [embedding2])[0][0]
-    # Escalar de 0 a 10 y redondear a 2 decimales
     return round(min(max(score * 10, 0), 10), 2)
 
-# Función para calcular ROUGE
 def rouge_score(reference, candidate):
     scorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)
     scores = scorer.score(reference, candidate)
-    # Normalizamos ROUGE y redondeamos a 2 decimales
     return round(min(max(scores['rouge1'].fmeasure * 10, 0), 10), 2)
 
-# Función para calcular Exact Match (Predicción)
 def exact_match_score(reference, generated_response):
     return 10.0 if reference.strip() == generated_response.strip() else 0.0
 
-# Función para calcular la Tasa de Cobertura de Features
 def tasa_cobertura_features(reference_features, generated_response):
     covered_features = len(set(reference_features).intersection(set(generated_response.split())))
     total_features = len(reference_features)
@@ -29,12 +22,11 @@ def tasa_cobertura_features(reference_features, generated_response):
     coverage_ratio = covered_features / total_features
     return round(min(max(coverage_ratio * 10, 0), 10), 2)
 
-# Función para calcular Perplexity (simulado en este caso)
 def perplexity_score(model, sentence):
+    # Esta es una implementación simulada. En un caso real, usarías el modelo para calcular la perplejidad.
     perplexity = np.random.uniform(0, 100)  # Simulación
     return round(min(max((100 - perplexity) / 10, 0), 10), 2)
 
-# Función para calcular todas las métricas
 def calculate_metrics(question, embeddings_df):
     # Seleccionar una fila de embeddings aleatoriamente como referencia
     random_row = embeddings_df.sample(n=1).iloc[0]
@@ -55,9 +47,9 @@ def calculate_metrics(question, embeddings_df):
 
     return {
         'Pregunta': question,
-        'Exact Match': exact_match,
         'Cosine Similarity': cosine_sim,
         'ROUGE': rouge,
+        'Exact Match': exact_match,
         'Tasa de Cobertura de Features': tasa_cobertura,
         'Perplexity': perplexity
     }
