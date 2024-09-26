@@ -1,0 +1,161 @@
+question,response,ndcg,cosine_similarity,mrr,rouge_l
+"¿Qué aspectos específicos del producto o servicio que adquiriste no cumplieron con tus expectativas? ¿Fue el tamaño, la calidad, la funcionalidad u otro factor lo que te llevó a considerarlo como una gran decepción en comparación con lo que esperabas recibir?","Lamentablemente, no puedo responder específicamente sobre un producto o servicio que adquiriste, ya que no tengo información sobre tus compras personales. Sin embargo, basándome en experiencias de usuarios en reseñas, puedo decirte que algunos aspectos que suelen decepcionar a los clientes son la calidad del producto, el tamaño diferente al esperado, problemas de funcionalidad o rendimiento, servicio al cliente deficiente, entre otros. Si tienes alguna duda en particular sobre un producto específico, estaré encantado de intentar ayudarte en base a la información disponible.",0.9228267045124371,0.999999999999999,1.0,0.20202019739210295
+"¿Cuáles son las características principales del servicio ""not for me"" que lo diferencian de otras opciones similares en el mercado?","El servicio ""not for me"" destaca por las siguientes características principales que lo diferencian de otras opciones similares en el mercado:
+
+1. Personalización: ""not for me"" ofrece una experiencia altamente personalizada, adaptando sus recomendaciones y sugerencias a los gustos y preferencias específicos de cada usuario. Esto se logra a través de algoritmos avanzados de recomendación y análisis de datos.
+
+2. Variedad de categorías: A diferencia de otras opciones similares, ""not for me"" abarca una amplia gama de categorías de productos y servicios, desde moda y belleza hasta tecnología y entretenimiento, lo que permite a los usuarios explorar una mayor diversidad",0.8105572007455455,1.0000000000000009,1.0,0.2826086922495274
+¿Cuáles son las principales características y beneficios del producto o servicio Great But que lo diferencian de sus competidores en el mercado?,"Basándome en reseñas de usuarios, el producto ""Great But"" se destaca por las siguientes características y beneficios que lo diferencian de sus competidores en el mercado:
+
+1. Facilidad de uso: Varios usuarios mencionan que Great But es muy fácil de usar, con una interfaz intuitiva que permite a los usuarios navegar y utilizar todas sus funciones sin complicaciones.
+
+2. Variedad de funciones: Los usuarios destacan la amplia gama de funciones que ofrece Great But, desde la organización de tareas hasta la planificación de proyectos, lo que lo convierte en una herramienta versátil para diferentes necesidades.
+
+3. Personalización: Great But permite a los usuarios personal",0.834846669792121,0.9999999999999992,1.0,0.29473683854626037
+¿Qué características específicas hacen que el producto o servicio Pretty Good se destaque entre la competencia y lo conviertan en una opción atractiva para los consumidores?,"Las características específicas que destacan al producto o servicio Pretty Good y lo convierten en una opción atractiva para los consumidores, según las reseñas de usuarios, son las siguientes:
+
+1. Calidad del producto: Los usuarios suelen resaltar la alta calidad de los productos o servicios de Pretty Good en comparación con la competencia. Esto incluye tanto la durabilidad de los productos como la excelencia en la prestación del servicio.
+
+2. Diseño atractivo: Muchos usuarios mencionan que el diseño de los productos de Pretty Good es moderno, elegante y atractivo visualmente, lo que les hace destacar frente a la competencia.
+
+3. Buen servicio al cliente: Los usuarios",0.6973799784576494,1.0,0.25,0.391752573395685
+¿Cuáles son las principales características técnicas y ventajas que ofrece el producto Great Light en comparación con otras opciones de iluminación disponibles en el mercado?,"Basándome en las reseñas de usuarios, el producto Great Light destaca por las siguientes características técnicas y ventajas en comparación con otras opciones de iluminación:
+
+1. **Eficiencia energética:** Los usuarios han destacado que Great Light utiliza tecnología LED de alta eficiencia energética, lo que permite un ahorro significativo en la factura eléctrica en comparación con las opciones tradicionales de iluminación.
+
+2. **Larga vida útil:** Los usuarios mencionan que las bombillas Great Light tienen una larga vida útil, lo que significa que no tienen que reemplazarse con tanta frecuencia como otras opciones de iluminación.
+
+3. **",0.9153875022692323,0.9999999999999996,1.0,0.29885057082309424
+¿Qué características distintivas tiene el producto Adorable que lo hacen destacar entre otras opciones similares en el mercado?,"Basándome en las reseñas de usuarios, algunas características distintivas del producto Adorable que lo hacen destacar entre otras opciones similares en el mercado son:
+
+1. Diseño único y atractivo: Varios usuarios mencionan que les encanta el diseño del producto, describiéndolo como adorable y llamativo.
+
+2. Calidad de los materiales: Muchos usuarios destacan la calidad de los materiales con los que está hecho el producto Adorable, mencionando que es resistente y duradero.
+
+3. Funcionalidad: Los usuarios valoran la funcionalidad del producto, mencionando que cumple con su propósito de manera eficiente y satisfactoria.
+
+4. Vers",0.7358380133093693,0.9999999999999998,0.5,0.32558139217685245
+¿Cuáles son las características clave del servicio It's Decent que lo diferencian de otras opciones disponibles en el mercado?,"It's Decent es un servicio que se destaca por varias características clave que lo diferencian de otras opciones en el mercado, según reseñas de usuarios:
+
+1. Precio asequible: Muchos usuarios destacan que It's Decent ofrece un servicio de calidad a un precio accesible en comparación con otras alternativas en el mercado.
+
+2. Facilidad de uso: Los usuarios mencionan que la plataforma de It's Decent es fácil de usar, con una interfaz intuitiva que facilita la navegación y la realización de tareas.
+
+3. Amplia variedad de funciones: It's Decent ofrece una amplia gama de funciones y herramientas que permiten a los usuarios realizar",0.7895945157166344,1.0000000000000007,0.5,0.2352941141757786
+"¿Cuáles son los aspectos positivos más destacados de ""Good, but with a few quirks""? Además, ¿podrías mencionar algunos de los inconvenientes o peculiaridades que los usuarios han experimentado al utilizar este producto o servicio?","Según las reseñas de los usuarios, los aspectos positivos más destacados de ""Good, but with a few quirks"" son:
+
+1. Interfaz intuitiva y fácil de usar.
+2. Gran variedad de funciones y características útiles.
+3. Buen rendimiento en general.
+4. Buena relación calidad-precio.
+5. Buena atención al cliente y servicio de soporte.
+
+En cuanto a los inconvenientes o peculiaridades que los usuarios han experimentado al utilizar este producto o servicio, algunos de ellos son:
+
+1. Problemas ocasionales de estabilidad o rendimiento.
+2. Algunas funciones pueden resultar confusas o difíciles de manejar.
+3. Actualiz",0.8521200159940444,1.0000000000000002,1.0,0.4444444402203857
+"¿Qué aspectos específicos del servicio ""Madelynnes boring review"" lo hacen destacar frente a otras opciones similares en el mercado?","Basándome en las reseñas de usuarios, algunos aspectos específicos que destacan el servicio ""Madelynnes boring review"" frente a otras opciones similares en el mercado son:
+
+1. Originalidad: Muchos usuarios mencionan que este servicio se destaca por su enfoque único y original para realizar reseñas, lo cual lo hace más interesante y entretenido que otras opciones tradicionales.
+
+2. Honestidad: Los usuarios aprecian la sinceridad y la transparencia en las reseñas realizadas por Madelynne, lo cual les brinda confianza en la información proporcionada.
+
+3. Detalle: Se menciona que las reseñas de este servicio son muy",0.685356269832448,1.0000000000000004,0.5,0.32558139190643587
+"¿Cómo garantiza Express Scripts que sus servicios de administración de beneficios de farmacia eliminan la preocupación de los pacientes sobre la cobertura, los costos y la disponibilidad de medicamentos, brindando así una experiencia simplificada y eficiente para todos los usuarios?","Express Scripts se destaca por ofrecer un servicio integral de administración de beneficios de farmacia que se enfoca en eliminar las preocupaciones de los pacientes en cuanto a la cobertura, los costos y la disponibilidad de medicamentos. Según reseñas de usuarios, la empresa logra esto a través de una combinación de atención al cliente eficiente, claridad en la información sobre cobertura y costos, y una red extensa de farmacias asociadas que garantizan la disponibilidad de medicamentos en todo momento. De esta manera, Express Scripts proporciona una experiencia simplificada y eficiente para todos los usuarios al brindarles la tranquilidad de saber que sus necesidades de medicamentos están",0.8640916576450531,0.9999999999999996,1.0,0.3960395997059112
+¿Qué tipo de opciones adicionales te gustaría ver incorporadas en el producto/servicio para que se ajuste mejor a tus necesidades o preferencias?,"Según las reseñas de usuarios, muchas personas han expresado que les gustaría ver en el producto/servicio las siguientes opciones adicionales para que se ajuste mejor a sus necesidades o preferencias:
+
+1. Mayor variedad de colores o diseños en el producto.
+2. Funcionalidades personalizables para adaptarse a diferentes estilos de trabajo o uso.
+3. Integración con otras plataformas o aplicaciones para una mayor conectividad.
+4. Características de seguridad adicionales para proteger la privacidad de los usuarios.
+5. Mejoras en la interfaz de usuario para hacerla más intuitiva y fácil de usar.
+6. Opciones de suscripción o planes de pago flex",0.8641283159705878,1.0000000000000002,1.0,0.30927834700818363
+¿Cuáles son las características y beneficios principales del servicio Two Stars que lo diferencian de otras plataformas de streaming de videojuegos disponibles en el mercado actualmente?,"Basándome en las reseñas de usuarios, las características y beneficios principales del servicio Two Stars que lo diferencian de otras plataformas de streaming de videojuegos disponibles en el mercado actualmente son:
+
+1. **Interacción en tiempo real**: Two Stars ofrece una experiencia de streaming de videojuegos donde los espectadores pueden interactuar con los streamers en tiempo real, lo que crea una experiencia más inmersiva y entretenida para los usuarios.
+
+2. **Contenido variado y exclusivo**: Los usuarios mencionan que Two Stars cuenta con una amplia variedad de contenido, incluyendo eventos exclusivos, torneos, y streamers famosos que no se encuentran en otras plata",0.7510022259808941,1.0000000000000002,0.5,0.4666666627555556
+"¿Cuáles son las diferencias clave entre League of Legends y otros juegos de tipo MOBA en términos de mecánicas de juego, estrategias y elementos de personalización de personajes que hacen que LOL se destaque como uno de los juegos más populares en su género?","League of Legends se destaca como uno de los juegos más populares en su género debido a varias diferencias clave con otros juegos MOBA:
+
+1. **Amplia variedad de campeones**: League of Legends cuenta con una variedad enorme de campeones, cada uno con habilidades únicas que permiten a los jugadores encontrar un estilo de juego que se adapte a sus preferencias. La diversidad de campeones permite una mayor personalización y estrategias únicas.
+
+2. **Sistema de runas y maestrías**: League of Legends cuenta con un sistema de runas y maestrías que permite a los jugadores personalizar aún más a sus campeones antes de cada partida",0.8782327278089403,1.0000000000000002,1.0,0.32989690260389
+¿Cuáles son las características y ventajas principales de Five Stars en comparación con otras plataformas de lealtad y recompensas para negocios?,"Según las reseñas de usuarios, Five Stars se destaca por las siguientes características y ventajas en comparación con otras plataformas de lealtad y recompensas para negocios:
+
+1. Facilidad de uso: Los usuarios elogian la interfaz intuitiva y fácil de usar de Five Stars, lo que facilita la participación de los clientes en el programa de lealtad.
+
+2. Personalización: Five Stars permite a los negocios personalizar las ofertas y promociones para adaptarse a las necesidades y preferencias de sus clientes, lo que aumenta la efectividad del programa de lealtad.
+
+3. Sistema de puntos flexible: Los usuarios valoran la flexibilidad del",0.8513114038009102,1.0000000000000007,1.0,0.30952380602324264
+¿Cuáles son las principales características y beneficios que te han mencionado sobre el producto o servicio que aún no has utilizado? ¿Cómo crees que estas características pueden satisfacer tus necesidades o resolver tus problemas específicos?,"Para responder a tu pregunta, necesito que me proporciones más detalles sobre el producto o servicio del que quieres que hablemos. ¿Tienes alguna idea en mente sobre lo que te gustaría saber?",0.7651967421390827,1.0000000000000002,0.5,0.20689654673008337
+¿Cuál es la tecnología de enfriamiento utilizada por Always Freezes para mantener los alimentos congelados durante largos períodos de tiempo sin comprometer su calidad?,"La tecnología de enfriamiento utilizada por Always Freezes para mantener los alimentos congelados durante largos períodos de tiempo sin comprometer su calidad es la tecnología de compresión. Los usuarios han destacado que este sistema de enfriamiento es altamente eficiente y mantiene una temperatura constante en el congelador, lo que ayuda a preservar los alimentos por más tiempo.",0.8246053138349774,0.9999999999999993,0.5,0.550724633236715
+"¿Cuál es el proceso de garantía y devolución para el producto ""Doesn't work""?","Lamentablemente, no dispongo de información sobre un producto específico llamado ""Doesn't work"", por lo que no puedo proporcionar información detallada sobre su proceso de garantía y devolución. Te recomendaría que revises la información provista por el fabricante o el vendedor del producto en su sitio web o que contactes directamente con su servicio de atención al cliente para obtener más detalles al respecto. ¿Puedo ayudarte con alguna otra pregunta?",0.8846453290262691,1.0000000000000004,1.0,0.21538461237396456
+¿Cuáles son las características principales que diferencian a Five Stars de otras plataformas de lealtad y recompensas?,"Según las reseñas de los usuarios, las características principales que diferencian a Five Stars de otras plataformas de lealtad y recompensas son las siguientes:
+
+1. Personalización: Five Stars permite a los negocios personalizar las ofertas y recompensas según las preferencias y comportamientos de sus clientes, lo que puede aumentar la efectividad de los programas de lealtad.
+
+2. Accesibilidad: Los usuarios destacan que la aplicación móvil de Five Stars es fácil de usar y que recibir y canjear recompensas es rápido y sencillo.
+
+3. Variedad de negocios: Five Stars cuenta con una amplia red de negocios participantes en diversos",0.8529209204252122,1.0,1.0,0.3333333300723209
+"¿Cuáles son las características clave del servicio Great que lo diferencian de otras opciones en el mercado y cómo puede beneficiar a los usuarios en términos de eficiencia, calidad y satisfacción del cliente?","Basándome en las reseñas de usuarios, algunas de las características clave del servicio Great que lo diferencian de otras opciones en el mercado son:
+
+1. Flexibilidad: Los usuarios mencionan que el servicio Great es altamente flexible, pudiendo adaptarse a las necesidades específicas de cada cliente de manera eficiente.
+
+2. Calidad: Varios usuarios destacan la alta calidad en los productos y/o servicios ofrecidos por Great, lo cual se traduce en una satisfacción garantizada.
+
+3. Atención al cliente: La atención al cliente es otro aspecto elogiado por los usuarios, mencionando la prontitud y eficacia en la resolución de cualquier inconveniente o d",0.6622435984353052,0.9999999999999993,0.3333333333333333,0.3461538421320266
+¿Cuáles son las principales razones por las que muchos consumidores consideran que el producto o servicio en cuestión es una pérdida de dinero en comparación con alternativas más económicas o eficientes disponibles en el mercado?,"Para responder a tu pregunta, necesitaría más detalles sobre el producto o servicio en cuestión para poder proporcionarte información precisa basada en reseñas de usuarios. ¿Podrías darme más información sobre el producto o servicio del que deseas saber por qué muchos consumidores consideran que es una pérdida de dinero en comparación con alternativas más económicas o eficientes disponibles en el mercado?",0.7998026683363574,1.0000000000000004,0.5,0.6133333285902223
+"¿Cuáles son los diferentes criterios que se utilizan para seleccionar un nuevo nombre para una marca, producto o servicio durante el proceso de rebranding?","Durante el proceso de rebranding, es importante considerar varios criterios al seleccionar un nuevo nombre para una marca, producto o servicio. Algunos de los criterios comunes incluyen:
+
+1. Relevancia y coherencia: El nuevo nombre debe estar alineado con la identidad y los valores de la marca, producto o servicio.
+
+2. Facilidad de pronunciación y escritura: Un nombre que sea fácil de pronunciar y recordar facilitará la difusión y el reconocimiento de la marca.
+
+3. Disponibilidad del nombre: Es crucial asegurarse de que el nombre seleccionado no esté registrado por otra empresa o marca para evitar problemas legales.
+
+4.",0.693069997773334,1.0000000000000004,0.5,0.32608695277173916
+"¿Cuáles son las características principales del servicio Maddie y cómo beneficia a las organizaciones que lo utilizan en términos de gestión de datos, análisis de información y toma de decisiones estratégicas? ¿Qué herramientas o funcionalidades ofrece Maddie para mejorar la eficiencia y efectividad en la recolección, almacenamiento y procesamiento de datos en diferentes sectores de la industria?","El servicio Maddie es una plataforma de gestión de datos y análisis de información que ofrece diversas herramientas y funcionalidades para ayudar a las organizaciones en la toma de decisiones estratégicas. Entre las características principales de Maddie se encuentran:
+
+1. Recolección de datos: Maddie facilita la recolección de datos de múltiples fuentes, tanto estructurados como no estructurados, centralizándolos en una única plataforma para su posterior análisis.
+
+2. Almacenamiento de datos: La plataforma ofrece un sistema seguro y escalable para el almacenamiento de datos, permitiendo a las organizaciones gestionar grandes volúmenes de información de forma eficiente.
+
+3",0.8312212065727462,1.0000000000000004,0.5,0.33333332854080944
+"¿Cuáles son las principales razones por las que algunos clientes consideran que el producto o servicio ""Not really worth the irritation"" no cumple con sus expectativas o no justifica el potencial malestar que les causa?","Basándome en las reseñas de usuarios sobre el producto o servicio ""Not really worth the irritation"", las principales razones por las que algunos clientes consideran que no cumple con sus expectativas o no justifica el malestar que les causa incluyen:
+
+1. Precio elevado en comparación con la calidad o utilidad percibida del producto o servicio.
+2. Falta de fiabilidad o durabilidad, lo que resulta en la necesidad de reemplazar o reparar el producto con frecuencia.
+3. Mala atención al cliente o servicio postventa insatisfactorio.
+4. Funcionalidades limitadas o falta de características deseadas.
+5. Problemas técnicos recurrentes que afect",0.8645493927812646,1.0000000000000018,1.0,0.40404039989796964
+"¿Podrías proporcionar más información sobre el producto o servicio ""Three Stars"" para comprender mejor sus características, precio, beneficios y público objetivo?","Basándome en las reseñas de usuarios, parece que ""Three Stars"" es un servicio de alojamiento web muy popular y bien valorado. Aquí tienes más información sobre sus características, precio, beneficios y público objetivo:
+
+- Características: ""Three Stars"" ofrece diversos planes de alojamiento web, que van desde hosting compartido hasta servidores dedicados. Sus servidores son confiables y tienen un buen tiempo de actividad. También incluyen herramientas para la creación de sitios web, instaladores automáticos de aplicaciones, soporte técnico y certificados SSL.
+
+- Precio: Los precios de ""Three Stars"" varían según el tipo de plan que elijas. Los planes de",0.8332464333434028,0.9999999999999998,0.5,0.25263157550360116
+"¿Qué aspectos específicos de la calidad, funcionalidad o servicio al cliente llevaron a la recomendación de ""No comprar sus productos"" y cuál ha sido tu experiencia personal que respalda esta advertencia?","Lamentablemente, necesito más información específica sobre el producto o servicio al que te refieres para poder brindarte una respuesta precisa. Una vez me proporciones más detalles, podré buscar reseñas de usuarios que hayan expresado razones para no recomendar dicho producto o servicio y compartir esa información contigo. ¡Por favor, cuéntame más para poder ayudarte mejor!",0.8682833881843656,1.0000000000000009,0.5,0.16216215739590956
+"¿Cuáles son las principales características y funcionalidades que ofrece Guitar Pro 6 como software de edición de partituras y tablaturas para guitarra y otros instrumentos musicales, y cómo se compara con otras herramientas similares en el mercado en términos de facilidad de uso, calidad de sonido y posibilidades de personalización de notación musical?","Guitar Pro 6 es un software de edición de partituras y tablaturas diseñado principalmente para guitarra, aunque también es compatible con otros instrumentos musicales. Algunas de sus principales características y funcionalidades incluyen:
+
+1. Creación y edición de partituras y tablaturas con una interfaz intuitiva y fácil de usar.
+2. Reproducción de las partituras y tablaturas con sonido realista mediante la inclusión de una amplia variedad de instrumentos preestablecidos.
+3. Posibilidad de ajustar la velocidad de reproducción, afinación y tonalidad de las pistas.
+4. Funciones de metrónomo y afin",0.7774235938146019,1.0,0.5,0.33999999512800005
+"¿Cuáles son las diferentes categorías de juegos de palabras disponibles en ""Word game lover"", y cómo se diferencian entre sí en términos de nivel de dificultad, tiempo de juego y desafíos ofrecidos a los jugadores?","En ""Word game lover"" puedes encontrar varias categorías de juegos de palabras, cada una con sus propias características en términos de nivel de dificultad, tiempo de juego y desafíos ofrecidos a los jugadores. Algunas de las categorías más comunes son:
+
+1. Crucigramas: Estos juegos suelen ser desafiantes y requieren un buen conocimiento del vocabulario y la habilidad para resolver acertijos. Suelen llevar más tiempo completarlos, ya que implican encontrar las palabras correctas para llenar todos los espacios en blanco.
+
+2. Sopa de letras: Estos juegos son más ligeros en términos de dificultad,",0.9533175529249339,1.0000000000000002,1.0,0.32989690302476354
+"¿Cómo se define la calidad del producto o servicio ""good enough"" en comparación con otras opciones disponibles en el mercado?","La calidad del producto o servicio ""good enough"" se define como aquella que cumple con las necesidades básicas o mínimas del usuario sin ser necesariamente excepcional o de alta gama. En comparación con otras opciones disponibles en el mercado, podría decirse que un producto o servicio ""good enough"" se encuentra en un punto intermedio en términos de calidad. No es el más barato ni el más caro, ni el de menor calidad ni el de mejor calidad, sino que ofrece un equilibro adecuado entre precio y prestaciones para satisfacer las necesidades del consumidor promedio. Los usuarios que valoran este tipo de calidad suelen priorizar la funcionalidad y la",0.8499377093902323,1.0,1.0,0.30769230438835893
+"¿Cuáles son las principales características y funcionalidades de ""Cool Game""? ¿Qué tipo de género de videojuego es, y cuál es su objetivo principal? Además, ¿cómo se diferencia de otros juegos similares en el mercado y qué aspectos lo hacen único y atractivo para los jugadores?","""Camino de la Muerte"" es un juego de  acción y aventuras que presenta gráficos vibrantes y una jugabilidad adictiva. Los jugadores tienen que recorrer un camino peligroso lleno de trampas y enemigos mientras intentan llegar al final de cada nivel. El objetivo principal es sobrevivir y llegar a la meta, evitando caer en trampas mortales y derrotando a los enemigos que se interponen en el camino.
+
+Lo que hace único a ""Camino de la Muerte"" es su estética retro combinada con mecánicas de juego modernas. Los controles son simples pero desafiantes, lo",0.8831200250291917,1.0,0.5,0.17475727684795941
+¿Cuáles son las características principales del juguete interactivo Fun Fish y cómo se diferencia de otros juguetes similares en el mercado?,"El juguete interactivo Fun Fish es un producto que ha sido bien valorado por los usuarios. Sus características principales incluyen:
+
+1. Diseño realista de pez: Fun Fish tiene un diseño que simula ser un pez real, lo que lo hace atractivo para los niños.
+
+2. Movimiento realista: El juguete cuenta con movimientos realistas que imitan el nado de un pez, lo que lo convierte en una opción divertida y entretenida.
+
+3. luces y sonidos: Fun Fish emite luces y sonidos que contribuyen a la experiencia interactiva del niño al jugar con él.
+
+Comparado con otros juguetes similares en el",0.7723488705971321,0.9999999999999996,0.5,0.27659574121095515

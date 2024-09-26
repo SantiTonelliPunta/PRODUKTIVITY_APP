@@ -1,48 +1,64 @@
-import sys
 import os
-from datetime import datetime
 import pandas as pd
+from datetime import datetime
+from .config import *
+from .utils import (
+    load_embeddings,
+    generate_questions,
+    simulate_responses,
+    calculate_metrics,
+    create_visualizations
+)
 
-# Añadir el directorio raíz al path de Python
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+def run_evaluation():
+    """
+    Función principal que ejecuta el proceso de evaluación completo.
+    """
+    print("Iniciando proceso de evaluación...")
 
-from test.utils.data_processing import load_embeddings, generate_random_questions
-from test.utils.metrics import calculate_metrics
-from test.utils.visualization import plot_results_to_html
+    # Cargar embeddings
+    embeddings = load_embeddings(EMBEDDINGS_PATH)
+    print(f"Embeddings cargados: {len(embeddings)}")
 
-# Crear carpeta 'test/results' si no existe
-results_dir = 'test/results'
-if not os.path.exists(results_dir):
-    os.makedirs(results_dir)
+    # Generar preguntas
+    questions = generate_questions(embeddings, NUM_QUESTIONS)
+    print(f"Preguntas generadas: {len(questions)}")
 
-# Cargar embeddings
-embeddings_df = load_embeddings('embeddings/1000_embeddings_store.csv')
+    # Simular respuestas
+    responses = simulate_responses(questions)
+    print(f"Respuestas simuladas: {len(responses)}")
 
-# Generar preguntas usando GPT
-questions = generate_random_questions(embeddings_df, num_questions=30)
+    # Calcular métricas
+    results = calculate_metrics(questions, responses)
+    print("Métricas calculadas")
 
-# Inicializar lista de resultados
-results = []
+    # Crear timestamp para los nombres de archivo
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# Calcular métricas para cada pregunta
-for question in questions:
-    result = calculate_metrics(question, embeddings_df)
-    results.append(result)
+    # Guardar resultados en CSV
+    csv_path = os.path.join(CSV_OUTPUT_PATH, f"evaluation_results_{timestamp}.csv")
+    results_df = pd.DataFrame(results)
+    results_df.to_csv(csv_path, index=False)
+    print(f"Resultados guardados en: {csv_path}")
 
-# Crear DataFrame de resultados
-results_df = pd.DataFrame(results)
+    # Crear visualizaciones
+    html_path = os.path.join(HTML_OUTPUT_PATH, f"evaluation_visuals_{timestamp}")
+    html_file, image_files = create_visualizations(results, html_path)
+    print(f"Visualizaciones guardadas en: {html_file}")
+    print(f"Imágenes guardadas en: {', '.join(image_files)}")
 
-# Guardar resultados en un archivo CSV
-csv_path = os.path.join(results_dir, 'results_evaluacion_gpt.csv')
-results_df.to_csv(csv_path, index=False)
+    # Mostrar resultados por consola
+    print("\nResumen de resultados:")
+    for result in results:
+        print(f"Pregunta: {result['question']}")
+        print(f"Respuesta: {result['response']}")
+        print(f"NDCG: {result['ndcg']:.4f}")
+        print(f"Similaridad de coseno: {result['cosine_similarity']:.4f}")
+        print(f"MRR: {result['mrr']:.4f}")
+        print(f"ROUGE-L: {result['rouge_l']:.4f}")
+        print("--------------------")
 
-# Mostrar resultados en una tabla
-print("Resultados:")
-print(results_df)
+    print("Proceso de evaluación completado.")
 
-# Generar visualizaciones en un archivo HTML
-timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-html_file_path = os.path.join(results_dir, f"autoanalisis_gpt_{datetime.now().strftime('%Y%m%d_%H%M')}.html")
-plot_results_to_html(results_df, html_file_path, title=f"AUTOANALISIS con GPT {timestamp}")
-
-print(f"Evaluación completada. Resultados guardados en '{csv_path}' y gráficos en '{html_file_path}'")
+if __name__ == "__main__":
+    run_evaluation()

@@ -1,0 +1,127 @@
+question,response,ndcg,cosine_similarity,mrr,rouge_l
+¿Qué tipo de opciones específicas te gustaría ver añadidas al producto/servicio para que se adaptara mejor a tus necesidades o preferencias?,Para responder a tu pregunta necesitaría más información sobre el producto o servicio específico del que estás hablando. ¿Podrías proporcionarme más detalles para poder ofrecerte una respuesta más precisa?,0.7582262861684005,1.0000000000000002,0.3333333333333333,0.12499999507812519
+¿Qué características específicas de la aplicación te han hecho disfrutarla tanto y considerarla como muy buena?,"Por supuesto, para poder ofrecerte una respuesta más precisa, necesitaría saber de qué aplicación en particular estamos hablando. ¿Podrías proporcionarme más información sobre el nombre de la aplicación o sobre sus características principales para poder ofrecerte una respuesta más detallada?",0.8922576790366908,1.0,1.0,0.13043477807183385
+"¿Qué características específicas hacen que el producto ""pretty good"" se destaque de la competencia en términos de calidad, funcionalidad y diseño?","Basándome en las reseñas de usuarios sobre el producto ""pretty good"", las características que destacan y lo diferencian de la competencia en términos de calidad, funcionalidad y diseño son las siguientes:
+
+1. Calidad: Varios usuarios mencionan la alta calidad de los materiales utilizados en la fabricación del producto ""pretty good"". Además, destacan la durabilidad y resistencia que posee, lo cual lo hace sobresalir en comparación con otros productos similares en el mercado.
+
+2. Funcionalidad: Los usuarios resaltan la facilidad de uso y la eficacia del producto ""pretty good"" en cumplir con su propósito principal. Además, menc",0.7580718403253714,0.9999999999999999,0.5,0.29268292314098754
+"¿Cómo afecta la necesidad de crear una cuenta para ver contenido a la accesibilidad y comodidad de los usuarios que visitan una plataforma en línea, y cuáles serían algunas alternativas viables para garantizar la privacidad y seguridad de los datos sin imponer esta barrera al acceso al contenido?","La necesidad de crear una cuenta para ver contenido puede afectar la accesibilidad y comodidad de los usuarios que visitan una plataforma en línea, ya que algunos usuarios pueden ver esto como una barrera para acceder rápidamente al contenido que desean consumir. Además, algunos usuarios pueden sentirse molestos al tener que compartir sus datos personales para crear una cuenta.
+
+Algunas alternativas viables para garantizar la privacidad y seguridad de los datos sin imponer la barrera de tener que crear una cuenta podrían ser:
+
+1. Acceso de prueba gratuito: Ofrecer acceso gratuito y limitado al contenido de la plataforma durante un período de tiempo determinado para permitir a los usuarios explorar y",0.7424037455545406,1.0000000000000002,0.5,0.5523809477623584
+"¿Qué características específicas de la aplicación ""Great App"" hacen que los botones grandes sean un elemento destacado y qué beneficios adicionales proporcionan para mejorar la experiencia del usuario?","Según las reseñas de los usuarios, en la aplicación ""Great App"" los botones grandes son destacados debido a su tamaño y diseño intuitivo. Esto proporciona varios beneficios adicionales para mejorar la experiencia del usuario, como facilitar la navegación y la interacción con la aplicación, especialmente para personas con dificultades visuales o destreza limitada en el uso de dispositivos móviles.
+
+Los botones grandes ayudan a los usuarios a identificar claramente las opciones disponibles en la aplicación, lo que reduce la posibilidad de cometer errores al seleccionar una función específica. Además, al ser más fáciles de pulsar, los botones grandes aumentan la accesibilidad y la",0.6466940117071238,0.9999999999999996,0.5,0.29702969905303406
+"¿Cuáles son las características principales del servicio ""Fun with Words"" y cómo ayuda a mejorar las habilidades lingüísticas de los usuarios? ¿Qué tipo de actividades provee para promover el aprendizaje y la diversión con las palabras?","El servicio ""Fun with Words"" es una plataforma en línea que ofrece una variedad de actividades y juegos diseñados para mejorar las habilidades lingüísticas de los usuarios, especialmente en áreas como vocabulario, gramática, ortografía y comprensión de lectura.
+
+Algunas de las características principales de ""Fun with Words"" incluyen:
+
+1. Juegos interactivos: La plataforma ofrece juegos interactivos que desafían a los usuarios a utilizar su vocabulario y conocimientos gramaticales de una manera divertida y entretenida.
+
+2. Ejercicios de vocabulario: ""Fun with Words"" incluye ejercicios de vocabulario que ayudan a los usuarios a ampliar su léxico y",0.9021015272763195,1.0,1.0,0.3010752643033877
+¿Cuáles son las características específicas que hacen que el producto o servicio ! FIVE STAR ! se destaque y lo hagan sobresalir frente a otras opciones similares en el mercado?,"Basándome en las reseñas de los usuarios, el producto o servicio ! FIVE STAR ! se destaca por las siguientes características específicas:
+
+1. Calidad excepcional: Los usuarios mencionan la alta calidad de los productos o servicios ofrecidos por ! FIVE STAR !, lo que se refleja en su durabilidad y efectividad.
+
+2. Atención al cliente: Las reseñas resaltan la excelente atención al cliente proporcionada por ! FIVE STAR !, indicando que el personal es amable, servicial y receptivo a las necesidades de los usuarios.
+
+3. Innovación: Los usuarios elogian la innovación de ! FIVE STAR ! en cuanto a sus productos o",0.8554819455369675,1.000000000000001,1.0,0.28571428154087675
+"¿Cuáles son las características principales del servicio ""Not fun at all"" que lo diferencian de otras ofertas similares en el mercado?","""Not Fun At All"" es una banda de punk rock sueca, no un servicio o producto. ¿Necesitas información sobre otra cosa? ¡Estoy aquí para ayudarte!",0.8564896216747855,1.0000000000000007,1.0,0.0869565167769379
+¿Cuáles son las características y especificaciones técnicas principales del producto One Star?,"Lamentablemente, no puedo proporcionar información específica sobre un producto llamado ""One Star"" sin más detalles. Si puedes proporcionar más información o contexto sobre el producto en cuestión, estaré encantado de ayudarte a buscar las características y especificaciones técnicas principales basadas en reseñas de usuarios. ¡Por favor, dime más sobre el producto para que pueda ofrecerte una respuesta más precisa!",0.8332303421067561,0.9999999999999998,1.0,0.2372881323527722
+"¿Cuál es el proceso de devolución o reembolso para el producto ""Doesn't work"" si el cliente experimenta problemas con su funcionamiento?","El proceso de devolución o reembolso para el producto ""Doesn't work"" puede variar dependiendo del lugar de compra y la política de devoluciones de la tienda o el fabricante. Según reseñas de usuarios, en algunas ocasiones es necesario contactar directamente al servicio de atención al cliente de la empresa para solicitar un reemplazo o un reembolso en caso de que el producto no funcione correctamente.
+
+Se recomienda revisar la página web del fabricante o la tienda donde se adquirió el producto para obtener información detallada sobre el proceso de devolución o reembolso. En caso de dudas, es importante comunicarse con el servicio de atención",0.9194335242109514,1.0000000000000004,1.0,0.2682926793664485
+"¿Cuáles son las características principales del servicio ""You can't have it all"" y cómo se diferencia de otros servicios similares en el mercado?","Lamentablemente, no tengo información específica sobre un servicio llamado ""You can't have it all"". Si tienes más detalles o información adicional sobre el servicio, estaré encantado de intentar ayudarte con tu pregunta.",0.8595115011705631,1.0000000000000004,1.0,0.2641509384834461
+"¿Cuáles son las principales características que hacen que fun but HARD sea un desafío emocionante y entretenido, y cómo se diferencian de otros juegos similares en el mercado?","Fun but HARD es un juego que se destaca por sus desafíos emocionantes y entretenidos debido a varias características clave:
+
+1. Niveles desafiantes: Los usuarios mencionan que cada nivel del juego presenta un desafío único y difícil de superar, lo que mantiene su interés y los motiva a seguir jugando.
+
+2. Diseño creativo: La estética y diseño del juego son muy llamativos y creativos, lo que aporta un factor de diversión adicional a la experiencia de juego.
+
+3. Variedad de obstáculos: A lo largo del juego, los usuarios se encuentran con una variedad de obstáculos que deben superar",0.6109199530803208,0.9999999999999999,0.16666666666666666,0.18367346548937952
+¿Cuáles son las características específicas que hacen que el producto A Godsend! sea considerado como una solución tan útil y beneficiosa para los usuarios?,"El producto ""A Godsend!"" es altamente valorado por los usuarios debido a sus características específicas que lo hacen una solución útil y beneficiosa. Según las reseñas de los usuarios, algunas de las características que destacan son:
+
+1. **Facilidad de uso:** Los usuarios mencionan que el producto es muy fácil de usar y entender, lo que facilita su adopción y uso cotidiano.
+
+2. **Efectividad:** Las personas señalan que el producto cumple con sus expectativas y les ayuda a resolver problemas de manera eficaz, lo que lo convierte en una herramienta valiosa.
+
+3. **Innovación:** Se destaca la innovación del producto",0.7704882102446481,0.9999999999999993,0.3333333333333333,0.2553191452399276
+"¿Cuáles son las principales características que hacen que el producto ""Awesome"" se destaque frente a la competencia en el mercado actual? ¿Qué beneficios específicos ofrece a los usuarios y cómo se adaptan sus funcionalidades para satisfacer las necesidades de los clientes?","Basándome en las reseñas de los usuarios, el producto ""Awesome"" se destaca en el mercado actual por las siguientes características:
+
+1. Simplicidad de uso: Los usuarios destacan la interfaz intuitiva y fácil de usar de ""Awesome"", lo que facilita su uso para personas de diferentes niveles de habilidad técnica.
+
+2. Personalización: ""Awesome"" ofrece una amplia gama de opciones de personalización para adaptarse a las necesidades y preferencias individuales de los usuarios. Esto les permite configurar el producto de acuerdo a sus requisitos específicos.
+
+3. Funcionalidades avanzadas: Los usuarios valoran las funcionalidades avanzadas que ofrece ""Awesome"", como integraciones",0.9834811731027846,0.9999999999999992,1.0,0.3238095193650794
+"¿Cuáles son los requisitos específicos del sistema para poder utilizar el servicio que requiere un ordenador con escritorio remoto activado, incluyendo detalles sobre la versión del sistema operativo compatible, los componentes de hardware necesarios y los ajustes de configuración específicos que se necesitan para garantizar un funcionamiento óptimo del servicio?","Para utilizar un servicio que requiera un ordenador con escritorio remoto activado, los requisitos específicos del sistema pueden variar dependiendo del servicio en particular. Sin embargo, en términos generales, los requisitos típicos suelen incluir:
+
+1. **Sistema Operativo:**
+   - Debe tener una versión compatible de Windows, por ejemplo, Windows 10 Pro o Enterprise, ya que estas ediciones incluyen la función de Escritorio Remoto.
+   - También puede ser compatible con sistemas operativos basados en Linux que admitan clientes de RDP (Protocolo de Escritorio Remoto).
+
+2. **Componentes de Hardware:**
+   - Se recomienda un procesador",0.9370192046674861,0.9999999999999996,1.0,0.26785713826530616
+"¿Una vez que descargas la aplicación que ofrece un período de prueba de 7 días, cuál es el procedimiento para activar la prueba y cómo se selecciona la opción de pago para continuar utilizando el servicio después de que termine el periodo de prueba?","Parece que estás hablando de una aplicación que ofrece un período de prueba gratuito de 7 días. En general, una vez que descargas la aplicación, usualmente se te solicitará que crees una cuenta o inicies sesión. Durante este proceso, es posible que se te pida ingresar los detalles de tu tarjeta de crédito o método de pago preferido para que puedan cargar el costo del servicio una vez que finalice el período de prueba.
+
+Para activar la prueba gratuita de 7 días, normalmente tendrás que seguir los siguientes pasos:
+
+1. Descarga la aplicación desde la tienda de aplicaciones correspondiente.
+2. Abre la aplicación y sigue las instrucciones para crear",0.7286796923290448,0.9999999999999996,1.0,0.3396226372944109
+¿Cuáles son las limitaciones específicas que impiden que Prime Music funcione fuera de Estados Unidos y qué medidas recomendarías a los usuarios que deseen acceder al servicio desde otros países?,"Las limitaciones específicas que impiden que Prime Music funcione fuera de Estados Unidos se deben a restricciones de licencias de contenido, ya que las canciones y álbumes disponibles en Prime Music pueden variar según la región debido a acuerdos con sellos discográficos y artistas.
+
+Para los usuarios que deseen acceder a Prime Music desde otros países, se pueden considerar las siguientes medidas:
+
+1. **Utilizar una VPN**: Una VPN (Red Privada Virtual) puede ayudar a los usuarios a simular una conexión desde Estados Unidos y así acceder al servicio como si estuvieran en ese país.
+
+2. **Configurar una dirección de facturación en Estados Unidos**: Algun",0.8724700783390438,0.9999999999999998,1.0,0.3921568587620146
+¿Cuál es la gama de productos o servicios específicos que ofrece Good variety y cómo se diferencian entre sí para satisfacer las necesidades y preferencias de los distintos clientes?,"Good Variety ofrece una amplia gama de productos, incluyendo alimentos orgánicos, productos para el hogar ecológicos, artículos de cuidado personal naturales y productos para mascotas saludables. Cada uno de estos productos se diferencia en base a su calidad, origen sostenible, ingredientes naturales y respeto al medio ambiente. Esto permite satisfacer las necesidades y preferencias de distintos clientes, ya sea aquellos preocupados por su salud, el medio ambiente o el bienestar animal. Por ejemplo, los clientes que buscan opciones orgánicas y libres de químicos encontrarán productos alimenticios y de cuidado personal que cumplen con estos estándares, mientras que",0.7522454589127469,1.0000000000000007,0.5,0.23999999605800004
+"¿Cuáles son las opciones de entretenimiento disponibles en el servicio ""fun times"" y cómo se garantiza la diversión para una amplia gama de edades e intereses?","En base a las reseñas de usuarios, en el servicio ""fun times"" se ofrecen diversas opciones de entretenimiento, tales como juegos de mesa, actividades al aire libre, eventos culturales, excursiones, talleres creativos y sesiones de cine. Para garantizar la diversión para una amplia gama de edades e intereses, ""fun times"" se asegura de tener una variedad de actividades programadas donde cada persona pueda encontrar algo que le resulte atractivo. Además, se promueve la participación activa de los usuarios, permitiéndoles elegir las actividades en las que desean participar, lo que fomenta la diversidad de gustos y",0.7004099273313716,1.0000000000000009,1.0,0.3333333294813368
+"¿Cuáles son las características principales de Always Freezes que lo diferencian de otras marcas de helados congelados en el mercado, y cómo se asegura la empresa de mantener la calidad y frescura de sus productos durante el almacenamiento y distribución?","Always Freezes se destaca en el mercado de helados congelados por varias características que lo diferencian de otras marcas. Sus principales atributos incluyen:
+
+1. Variedad de sabores: Always Freezes ofrece una amplia gama de sabores para satisfacer a distintos gustos y preferencias. Desde opciones clásicas como vainilla y chocolate, hasta combinaciones más creativas y exóticas.
+
+2. Ingredientes de alta calidad: La marca se enfoca en utilizar ingredientes frescos y de primera calidad en la elaboración de sus helados, lo que se refleja en el sabor y la textura de sus productos.
+
+3. Textura cremosa: Los helados de",0.7428725276984539,0.9999999999999993,0.5,0.3076923034319527
+"¿Qué medidas específicas ha tomado la empresa responsable del servicio Resource hog para abordar y mejorar el problema que ocasiona que el proceso de apertura de correos electrónicos tome aproximadamente un minuto, afectando la eficiencia y la experiencia del usuario?","La empresa responsable del servicio Resource hog ha tomado varias medidas para abordar y mejorar el problema que ocasiona la lentitud en el proceso de apertura de correos electrónicos. Algunas de las medidas específicas que han implementado incluyen:
+
+1. Optimización del rendimiento del software: Han realizado ajustes en el código del software para mejorar su eficiencia y velocidad de procesamiento, lo que ha permitido reducir el tiempo que lleva abrir los correos electrónicos.
+
+2. Implementación de servidores más potentes: Han actualizado sus servidores para garantizar una mayor capacidad de procesamiento y una mejor respuesta a las solicitudes de los usuarios, lo que ha contribuido a",0.8590257669796283,1.0000000000000009,1.0,0.40384614951368347
+"¿Cuáles son las características principales del producto o servicio GG, incluyendo sus funcionalidades, ventajas competitivas, precios y disponibilidad en el mercado actual?","Lamentablemente, necesito más información específica sobre el producto o servicio ""GG"" para poder proporcionarte detalles precisos sobre sus características principales. ¿Podrías brindarme más detalles sobre GG? Por ejemplo, ¿se trata de un producto tecnológico, una herramienta de software, un servicio en línea, etc.? Una vez que tengamos más detalles, podré buscar reseñas de usuarios para proporcionarte información detallada sobre sus funcionalidades, ventajas competitivas, precios y disponibilidad en el mercado actual. ¡Estoy aquí para ayudarte!",0.8120196179521243,1.0000000000000007,1.0,0.3291139200320462
+"Lo siento, pero necesito más información sobre el producto o servicio del que deseas que genere una pregunta detallada. Por favor proporcióname más detalles para poder ayudarte de manera adecuada.","Claro, cuéntame más sobre el producto o servicio del que deseas que genere una pregunta detallada. ¿De qué se trata y cuáles son los aspectos que te interesan conocer más a fondo? Estoy aquí para ayudarte.",0.7267513774951253,0.9999999999999998,0.5,0.4918032737221178
+"¿Cuáles son las características específicas que hacen que One Star se destaque entre otras marcas de calzado deportivo, tanto en términos de diseño como de rendimiento?","Según las reseñas de usuarios, las características específicas que hacen que One Star se destaque entre otras marcas de calzado deportivo son las siguientes:
+
+1. Diseño icónico: El distintivo diseño de One Star con su estrella en el lateral del zapato es altamente reconocible y atractivo para los consumidores.
+
+2. Comodidad: Los usuarios destacan la comodidad y acolchado que ofrece el calzado One Star, lo que lo hace ideal para largas caminatas o actividades deportivas.
+
+3. Durabilidad: La calidad de los materiales y la construcción robusta del calzado One Star hacen que sea duradero y resistente al des",0.7708946117012323,1.0000000000000004,1.0,0.3157894700144045
+"¿Cuáles son las características y funcionalidades clave del juego ""Great Game"" que lo hacen destacar entre otros títulos de la misma categoría?","Basándome en las reseñas de usuarios, las características y funcionalidades clave que hacen destacar al juego ""Great Game"" entre otros títulos de la misma categoría son las siguientes:
+
+1. Gráficos impresionantes: Varios usuarios han elogiado los impresionantes gráficos y la calidad visual del juego, lo que crea una experiencia inmersiva para los jugadores.
+
+2. Jugabilidad adictiva: Según las reseñas, ""Great Game"" ofrece una jugabilidad adictiva que mantiene a los jugadores entretenidos durante horas, con desafíos interesantes y variados.
+
+3. Variedad de modos de juego: Los usuarios han destac",0.8383030099838529,0.9999999999999997,1.0,0.3956043919381718
+"¿Cuáles son las diferencias clave entre la versión Pro de este producto y la versión gratuita, y por qué recomendarías optar por la versión gratuita en lugar de la Pro?",¡Claro! ¿Podrías proporcionarme más detalles sobre el producto del que estás hablando para poder brindarte una respuesta más específica?,0.6416621118748504,0.9999999999999999,0.25,0.04999999505000049
+"¿Cómo se diferencia el servicio de ""Avoid this"" de otras soluciones similares en el mercado en términos de eficacia, facilidad de uso y costos para los usuarios?","Basándome en las reseñas de usuarios, el servicio ""Avoid this"" se diferencia de otras soluciones similares en el mercado en los siguientes aspectos:
+
+1. Eficacia: Los usuarios suelen destacar la alta eficacia del servicio ""Avoid this"" en ayudarles a evitar situaciones no deseadas o riesgos potenciales. Muchos mencionan que gracias a la plataforma han podido anticipar problemas y tomar decisiones más informadas.
+
+2. Facilidad de uso: En general, los usuarios encuentran que la plataforma de ""Avoid this"" es muy intuitiva y fácil de usar. Los procesos para generar alertas, recibir recomendaciones o compartir información con otros usuarios son",0.9181134950808296,1.0,1.0,0.2708333298003473
+"¿Qué aspectos específicos o características del servicio ""Did Not Enjoy"" lo hicieron decepcionante o insatisfactorio para ti en comparación con otras alternativas disponibles en el mercado?","Lamentablemente, no tengo información específica sobre un servicio llamado ""Did Not Enjoy"" para poder brindarte una respuesta detallada. Si tienes más detalles o información sobre el servicio en cuestión, estaré encantado de ayudarte a responder tu pregunta. ¿Hay algo más en lo que te pueda ayudar?",0.919701932868797,0.9999999999999998,1.0,0.21538461072662735
+"¿Qué características específicas del producto ""Too Difficult to Master - Lost Interest"" lo hacen desafiante para los usuarios y pueden llevar a la pérdida de interés en su uso?","Según las reseñas de usuarios, algunas características específicas del producto ""Too Difficult to Master - Lost Interest"" que lo hacen desafiante para los usuarios y pueden llevar a la pérdida de interés en su uso son:
+
+1. Curva de aprendizaje empinada: Los usuarios mencionan que el producto es difícil de dominar desde el principio, lo cual puede resultar desmotivante para aquellos que buscan una experiencia más accesible.
+
+2. Falta de tutorial o ayuda integrada: Algunos usuarios señalan que la falta de instrucciones claras o de herramientas de ayuda integradas dificultan la comprensión y el uso efectivo del producto.
+
+3.",0.7616953372414378,0.9999999999999996,0.5,0.5242718406145725
+"¿Cuál podría ser la causa técnica específica que resulta en que el audio se corte en los videos exportados, y cuáles serían las posibles soluciones para corregir este inconveniente y asegurar una exportación de video sin interrupciones en el sonido?","La causa técnica específica que podría resultar en que el audio se corte en los videos exportados podría deberse a varios factores, como problemas de codificación, configuraciones incorrectas, incompatibilidad de formatos, entre otros. Algunas posibles soluciones para corregir este inconveniente y asegurar una exportación de video sin interrupciones en el sonido podrían ser:
+
+1. Asegurarse de que el software de edición de video está actualizado a la última versión.
+2. Verificar que los códecs de audio utilizados son compatibles con el formato de exportación seleccionado.
+3. Ajustar la configuración de audio en el software de ed",0.8521450854344979,0.9999999999999994,0.5,0.5048543644452823

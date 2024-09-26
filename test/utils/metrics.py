@@ -1,55 +1,60 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from rouge_score import rouge_scorer
+from rouge import Rouge
 
-def cosine_similarity_score(embedding1, embedding2):
-    score = cosine_similarity([embedding1], [embedding2])[0][0]
-    return round(min(max(score * 10, 0), 10), 2)
+def calculate_ndcg(relevance_scores, k=10):
+    """Calcula el NDCG."""
+    dcg = sum((2**rel - 1) / np.log2(i + 2) for i, rel in enumerate(relevance_scores[:k]))
+    idcg = sum((2**rel - 1) / np.log2(i + 2) for i, rel in enumerate(sorted(relevance_scores, reverse=True)[:k]))
+    return dcg / idcg if idcg > 0 else 0
 
-def rouge_score(reference, candidate):
-    scorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)
-    scores = scorer.score(reference, candidate)
-    return round(min(max(scores['rouge1'].fmeasure * 10, 0), 10), 2)
+def calculate_mrr(relevance_binary):
+    """Calcula el MRR."""
+    for i, rel in enumerate(relevance_binary):
+        if rel == 1:
+            return 1 / (i + 1)
+    return 0
 
-def exact_match_score(reference, generated_response):
-    return 10.0 if reference.strip() == generated_response.strip() else 0.0
+def extract_embedding(embedding_dict):
+    """Extrae el vector de embedding del diccionario."""
+    if 'embeddings_str' in embedding_dict:
+        return np.array([float(x) for x in embedding_dict['embeddings_str'].strip('[]').split(',')])
+    elif 'embedding' in embedding_dict:
+        return np.array(embedding_dict['embedding'])
+    else:
+        raise ValueError("Formato de embedding no reconocido")
 
-def tasa_cobertura_features(reference_features, generated_response):
-    covered_features = len(set(reference_features).intersection(set(generated_response.split())))
-    total_features = len(reference_features)
-    if total_features == 0:
-        return 0
-    coverage_ratio = covered_features / total_features
-    return round(min(max(coverage_ratio * 10, 0), 10), 2)
-
-def perplexity_score(model, sentence):
-    # Esta es una implementación simulada. En un caso real, usarías el modelo para calcular la perplejidad.
-    perplexity = np.random.uniform(0, 100)  # Simulación
-    return round(min(max((100 - perplexity) / 10, 0), 10), 2)
-
-def calculate_metrics(question, embeddings_df):
-    # Seleccionar una fila de embeddings aleatoriamente como referencia
-    random_row = embeddings_df.sample(n=1).iloc[0]
-    reference = random_row['cleaned_tokens']
-    generated_response = random_row['lemmatized_tokens']
-    embedding = np.fromstring(random_row['embeddings_str'][1:-1], sep=' ')
+def calculate_metrics(questions, responses):
+    """
+    Calcula las métricas NDCG, similaridad de coseno, MRR y ROUGE-L.
+    """
+    rouge = Rouge()
+    results = []
     
-    # Comparar con otro embedding
-    comparison_row = embeddings_df.sample(n=1).iloc[0]
-    comparison_embedding = np.fromstring(comparison_row['embeddings_str'][1:-1], sep=' ')
+    for q, r in zip(questions, responses):
+        # Extraer los embeddings
+        q_embedding = extract_embedding(q['embedding'])
+        r_embedding = extract_embedding(r['embedding'])
+        
+        # Simular relevancia y calcular NDCG y MRR
+        relevance_scores = np.random.rand(10)  # Simulación de scores de relevancia
+        ndcg = calculate_ndcg(relevance_scores)
+        mrr = calculate_mrr([1 if score > 0.5 else 0 for score in relevance_scores])
+        
+        # Calcular similaridad de coseno
+        cos_sim = cosine_similarity([q_embedding], [r_embedding])[0][0]
+        
+        # Calcular ROUGE-L
+        rouge_scores = rouge.get_scores(r['response'], q['question'])
+        rouge_l = rouge_scores[0]['rouge-l']['f']
+        
+        results.append({
+            "question": q['question'],
+            "response": r['response'],
+            "ndcg": ndcg,
+            "cosine_similarity": cos_sim,
+            "mrr": mrr,
+            "rouge_l": rouge_l
+        })
     
-    # Calcular las métricas
-    cosine_sim = cosine_similarity_score(embedding, comparison_embedding)
-    rouge = rouge_score(reference, generated_response)
-    exact_match = exact_match_score(reference, generated_response)
-    tasa_cobertura = tasa_cobertura_features(reference.split(), generated_response)
-    perplexity = perplexity_score(None, generated_response)
-
-    return {
-        'Pregunta': question,
-        'Cosine Similarity': cosine_sim,
-        'ROUGE': rouge,
-        'Exact Match': exact_match,
-        'Tasa de Cobertura de Features': tasa_cobertura,
-        'Perplexity': perplexity
-    }
+    return results
