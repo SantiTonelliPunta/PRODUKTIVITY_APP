@@ -17,7 +17,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .container {
@@ -38,7 +38,7 @@ header {
     width: 490px;
     height: 103px; /* Reduced by 15% from 122px */
     display: block;
-    margin: 20px auto 10px; /* Reduced top margin from 40px to 20px, added bottom margin */
+    margin: 0px auto 10px; /* Reduced top margin from 40px to 20px, added bottom margin */
     object-fit: contain;
 }
 
@@ -48,7 +48,8 @@ p {
 
 .intro {
     background-color: var(--chat-bg);
-    padding: 17px; /* Reduced by 15% from 20px */
+    padding: 10px; /* Reduced by 15% from 20px */
+    padding-left: 20px;
     border-radius: 8.5px; /* Reduced by 15% from 10px */
     margin-bottom: 17px; /* Reduced by 15% from 20px */
     box-shadow: 0 1.7px 4.25px rgba(0,0,0,0.1); /* Reduced by 15% */
@@ -66,8 +67,8 @@ p {
 
 .message {
     margin-bottom: 12.75px; /* Reduced by 15% from 15px */
-    padding: 8.5px; /* Reduced by 15% from 10px */
-    border-radius: 8.5px; /* Reduced by 15% from 10px */
+    border-radius: 8px; /* Reduced by 15% from 10px */
+    padding: 5px 10px;
     max-width: 80%;
 }
 
@@ -93,6 +94,7 @@ p {
     border: 1px solid #ddd;
     border-radius: 4.25px; /* Reduced by 15% from 5px */
     font-size: 13.6px; /* Reduced by 15% from 16px */
+    line-height: 18px;
 }
 
 .chat-input::placeholder {
@@ -100,14 +102,15 @@ p {
 }
 
 .chat-submit {
-    padding: 8.5px 17px; /* Reduced by 15% from 10px 20px */
-    background-color: var(--primary-color);
+    padding: 10 x 17px; /* Reduced by 15% from 10px 20px */
+    background-color: #b94a06 ;
     color: #ffffff;
     border: none;
     border-radius: 4.25px; /* Reduced by 15% from 5px */
     cursor: pointer;
     font-size: 13.6px; /* Reduced by 15% from 16px */
     transition: background-color 0.3s ease;
+    min-width: 30%;
 }
 
 .chat-submit:hover {
@@ -141,4 +144,48 @@ p {
 
 .respuesta-ia {
     white-space: pre-wrap;
+}
+
+/* Estilos para el título del widget */
+.suggestions-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* Estilos para el contenedor de preguntas */
+.suggestions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.suggestion {
+    background-color: rgba(255, 255, 255, 0.4) !important; /* Fondo del botón con 40% transparencia */
+    border: 1px solid #b2b2b2 !important; /* Borde de 1px color #b2b2b2 */
+    border-radius: 10px !important; /* Bordes redondeados */
+    padding: 10px !important; /* Padding interno de 10px */
+    font-size: 1em !important; /* Tamaño de la fuente ajustado */
+    color: #b2b2b2 !important; /* Color de la tipografía */
+    cursor: pointer !important;
+    flex: 1 1 calc(32% - 20px) !important; /* Ajuste de tamaño a 32% del ancho menos 20px */
+    text-align: center !important;
+    margin: 10px !important;
+    outline: none !important; /* Eliminamos outline por defecto */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important; /* Suavizar hover */
+}
+
+.suggestion:hover {
+    background-color: rgba(255, 255, 255, 0.6) !important; /* Fondo con más opacidad al hacer hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important; /* Sombra al hacer hover */
+    color: #000 !important; /* Cambiar color del texto a negro al hacer hover */
+}
+
+.suggestions-title {
+    font-size: 1.2em !important;
+    margin-bottom: 10px !important;
+    color: var(--text-color) !important;
+    text-align: left !important;
 }
