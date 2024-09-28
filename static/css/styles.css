@@ -138,3 +138,7 @@ p {
     align-self: flex-end;
     margin-left: auto;
 }
+
+.respuesta-ia {
+    white-space: pre-wrap;
+}
