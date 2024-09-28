@@ -4,7 +4,11 @@ $(document).ready(function() {
     }
 
     function addLineBreaks(text) {
-        return text.replace(/\.\s/g, '.<br>');
+        // Primero, reemplazamos los puntos seguidos de dos espacios o más con un salto de línea doble
+        text = text.replace(/\.\s{2,}/g, '.<br><br>');
+        // Luego, reemplazamos los puntos seguidos de un solo espacio con un salto de línea simple
+        text = text.replace(/\.\s/g, '.<br>');
+        return text;
     }
 
     function sendWelcomeMessage(message) {
@@ -40,6 +44,9 @@ $(document).ready(function() {
 
                 let cleanedResponse = cleanMarkdown(response.respuesta);
                 let formattedResponse = addLineBreaks(cleanedResponse);
+
+                console.log("Respuesta original:", response.respuesta);
+                console.log("Respuesta formateada:", formattedResponse);
 
                 $(`#${loaderId}`).replaceWith(`<div class="message assistant-message"><p>${formattedResponse} (Tiempo de respuesta: ${responseTime} segundos)</p></div>`);
                 $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
