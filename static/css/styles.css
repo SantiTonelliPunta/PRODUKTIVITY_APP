@@ -29,7 +29,7 @@ body {
 
 header {
     text-align: center;
-    padding: 10px 0; /* Reduced from 20px 0 */
+    padding: 0px 0; /* Reduced from 20px 0 */
     border-radius: 8.5px 8.5px 0 0; /* Reduced by 15% from 10px 10px 0 0 */
     background-color: var(--background-color);
 }
@@ -40,6 +40,15 @@ header {
     display: block;
     margin: 0px auto 10px; /* Reduced top margin from 40px to 20px, added bottom margin */
     object-fit: contain;
+}
+
+h1 {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18px;
+    color: #0c2834;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
 p {
@@ -59,7 +68,7 @@ p {
     background-color: var(--chat-bg);
     border-radius: 8.5px; /* Reduced by 15% from 10px */
     padding: 17px; /* Reduced by 15% from 20px */
-    height: 238px; /* Reduced by 15% from 280px */
+    height: 400px; /* Reduced by 15% from 280px */
     overflow-y: auto;
     margin-bottom: 17px; /* Reduced by 15% from 20px */
     box-shadow: 0 1.7px 4.25px rgba(0,0,0,0.1); /* Reduced by 15% */
@@ -68,8 +77,8 @@ p {
 .message {
     margin-bottom: 12.75px; /* Reduced by 15% from 15px */
     border-radius: 8px; /* Reduced by 15% from 10px */
-    padding: 5px 10px;
-    max-width: 80%;
+    padding: 5px 20px;
+    max-width: 90%;
 }
 
 .user-message {
@@ -93,8 +102,8 @@ p {
     padding: 8.5px; /* Reduced by 15% from 10px */
     border: 1px solid #ddd;
     border-radius: 4.25px; /* Reduced by 15% from 5px */
-    font-size: 13.6px; /* Reduced by 15% from 16px */
-    line-height: 18px;
+    font-size: 15px; /* Reduced by 15% from 16px */
+    line-height: 30px;
 }
 
 .chat-input::placeholder {
@@ -108,9 +117,10 @@ p {
     border: none;
     border-radius: 4.25px; /* Reduced by 15% from 5px */
     cursor: pointer;
-    font-size: 13.6px; /* Reduced by 15% from 16px */
+    font-size: 15px; /* Reduced by 15% from 16px */
     transition: background-color 0.3s ease;
     min-width: 30%;
+    font-weight: 900;
 }
 
 .chat-submit:hover {
