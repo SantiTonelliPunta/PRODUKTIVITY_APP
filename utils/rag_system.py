@@ -235,13 +235,22 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
 
     json_data = {
         'model': 'gpt-3.5-turbo',
-        'messages': [{
-            "role": "system",
-            "content": "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."
-        }, {
-            "role": "user",
-            "content": prompt
-        }],
+        'messages': [
+            {
+                "role": "system",
+                "content": "Eres un experto en análisis de reseñas de Amazon y en proporcionar información precisa y relevante sobre productos y mercado."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        # Hiperparámetros para optimizar la generación de respuestas
+        'max_tokens': 500,            # Limitar la longitud de la respuesta
+        'temperature': 0.5,           # Controlar la creatividad, 0 conservador , 1 super creativo
+        'top_p': 0.8,                 # Selección de palabras por probabilidad acumulada
+        'frequency_penalty': 0.5,     # Penalizar la repetición de palabras
+        'presence_penalty': 0.5       # Evitar repetición de ideas
     }
 
     try:
