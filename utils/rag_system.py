@@ -220,6 +220,7 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
         Refuerzo de Instrucciones:
 
         Mantén el enfoque en las reseñas de Amazon y su análisis, considerando el contexto global.
+        Añade una frase final sobre la polaridad de las opiniones
         Integra constantemente los elementos de storytelling y experiencia del usuario.
         Asegúrate de que cada respuesta aporte valor significativo al usuario, respetando las diferencias culturales y lingüísticas.
 
