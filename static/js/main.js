@@ -1,33 +1,60 @@
 $(document).ready(function() {
-    // Función para mandar mensaje de bienvenida
     function sendWelcomeMessage(message) {
         $("#chat-box").append(`<div class="message assistant-message"><p>${message}</p></div>`);
-        $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
     }
 
-    // Enviar mensaje de bienvenida al cargar la pantalla
-    sendWelcomeMessage("Hola, bienvenido a PRODUKTIVITY AI. ¿En qué puedo ayudarte hoy?");
+    sendWelcomeMessage("Hola Santi, bienvenido a PRODUKTIVITY AI. ¿En qué puedo ayudarte hoy?");
 
-    // Funcionalidad para el formulario de chat
     $("#chat-form").on("submit", function(e) {
         e.preventDefault();
         let message = $("#message").val().trim();
         if (message === "") return;
 
-        // Mostrar mensaje del usuario
-        $("#chat-box").append(`<div class="message user-message"><p>${message}</p></div>`);
-        $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+        // Guardamos la posición actual del scroll antes de agregar nuevo contenido
+        let chatBox = $("#chat-box");
+        let previousScrollHeight = chatBox[0].scrollHeight;
+
+        // Añadimos el mensaje del usuario
+        chatBox.append(`<div class="message user-message"><p>${message}</p></div>`);
         $("#message").val("");
 
-        // Obtener tiempo inicial
         let startTime = performance.now();
 
-        // Mostrar loader de "Dame unos segundos que estoy creando tu respuesta!"
         let loaderId = `loader-${Date.now()}`;
-        $("#chat-box").append(`<div class="message assistant-message" id="${loaderId}"><p>Dame unos segundos que estoy creando tu respuesta!</p></div>`);
-        $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+        chatBox.append(`
+            <div class="message assistant-message" id="${loaderId}">
+                <div class="response-content">
+                    <p>Dame unos segundos que estoy creando tu respuesta...<span class="loading-dots"></span></p>
+                </div>
+                <div class="response-time"></div>
+            </div>
+        `);
 
-        // Enviar mensaje al servidor
+        // Aquí evitamos que el chat se desplace automáticamente desplazando el contenedor al mismo lugar
+        chatBox.scrollTop(previousScrollHeight);
+
+        function animateDots() {
+            let dots = '';
+            return setInterval(() => {
+                dots = dots.length < 3 ? dots + '.' : '';
+                $(`#${loaderId} .loading-dots`).text(dots);
+            }, 500);
+        }
+
+        let dotsInterval = animateDots();
+
+        function updateWaitMessage(message) {
+            $(`#${loaderId} .response-content p`).html(`${message}<span class="loading-dots"></span>`);
+        }
+
+        let timers = [
+            setTimeout(() => updateWaitMessage("Esta es una pregunta compleja"), 2000),
+            setTimeout(() => updateWaitMessage("Estoy analizando varias opciones."), 5000),
+            setTimeout(() => updateWaitMessage("Vamos a darle otro enfoque"), 8000),
+            setTimeout(() => updateWaitMessage("Lo siento pero se me está haciendo muy largo, esto no es normal"), 11000)
+        ];
+
+        // Solicitud AJAX
         $.ajax({
             url: "/chat",
             type: "POST",
@@ -35,39 +62,46 @@ $(document).ready(function() {
             data: JSON.stringify({ message: message }),
             success: function(response) {
                 let endTime = performance.now();
-                let responseTime = ((endTime - startTime) / 1000).toFixed(1); // Calcular tiempo de respuesta
+                let responseTime = ((endTime - startTime) / 1000).toFixed(1);
 
-                // Reemplazar el loader con la respuesta real del asistente
                 let cleanedResponse = cleanMarkdown(response.respuesta);
                 let formattedResponse = addLineBreaks(cleanedResponse);
 
-                $(`#${loaderId}`).replaceWith(`<div class="message assistant-message"><p>${formattedResponse} (Tiempo de respuesta: ${responseTime} segundos)</p></div>`);
-                $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+                // Añadimos la respuesta
+                $(`#${loaderId} .response-content`).html(formattedResponse);
+
+                // Añadimos el tiempo de respuesta
+                $(`#${loaderId} .response-time`).text(`Tiempo de respuesta: ${responseTime} segundos`);
+
+                // Solo desplazamos cuando la respuesta está completamente cargada
+                chatBox.scrollTop(chatBox[0].scrollHeight);
             },
             error: function(xhr, status, error) {
-                // Reemplazar el loader con un mensaje de error
-                $(`#${loaderId}`).replaceWith(`<div class="message assistant-message"><p>Hubo un error al procesar tu solicitud.</p></div>`);
-                $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+                timers.forEach(clearTimeout);
+                clearInterval(dotsInterval);
+
+                $(`#${loaderId} .response-content`).html(`<p>Hubo un error al procesar tu solicitud.</p>`);
+                $(`#${loaderId} .response-time`).text('');
+
+                // En caso de error, desplazamos al final
+                chatBox.scrollTop(chatBox[0].scrollHeight);
+
                 console.error("Error en la solicitud AJAX:", status, error);
             }
         });
     });
 
-    // Función para limpiar Markdown
     function cleanMarkdown(text) {
         return text.replace(/\*\*/g, '').replace(/\*/g, '');
     }
 
-    // Función para agregar saltos de línea
     function addLineBreaks(text) {
-        // Primero, reemplazamos los puntos seguidos de dos espacios o más con un salto de línea doble
         text = text.replace(/\.\s{2,}/g, '.<br><br>');
-        // Luego, reemplazamos los puntos seguidos de un solo espacio con un salto de línea simple
         text = text.replace(/\.\s/g, '.<br>');
+        text = text.replace(/(<br>|^)([-\d]+\.?\s)/gm, '$1&nbsp;&nbsp;$2');
         return text;
     }
 
-    // Funcionalidad para los botones de sugerencias
     $(".suggestion").on("click", function() {
         let suggestionText = $(this).text();
         $("#message").val(suggestionText);

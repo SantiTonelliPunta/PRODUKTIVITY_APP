@@ -199,3 +199,33 @@ p {
     color: var(--text-color) !important;
     text-align: left !important;
 }
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.blink-dots {
+    animation: blink 1.5s infinite;
+}
+
+.message.assistant-message {
+    display: flex;
+    flex-direction: column;
+}
+
+.response-content {
+}
+
+.response-time {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+}
+
+.loading-dots {
+    display: inline-block;
+    width: 20px;
+    text-align: left;
+}
