@@ -229,3 +229,11 @@ p {
     width: 20px;
     text-align: left;
 }
+.assistant-message {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.assistant-message-spacing {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

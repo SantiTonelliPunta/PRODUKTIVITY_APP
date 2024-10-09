@@ -10,7 +10,9 @@ $(document).ready(function() {
         let message = $("#message").val().trim();
         if (message === "") return;
 
+        // Guardamos la posición actual del scroll antes de agregar nuevo contenido
         let chatBox = $("#chat-box");
+        let previousScrollHeight = chatBox[0].scrollHeight;
 
         // Añadimos el mensaje del usuario
         chatBox.append(`<div class="message user-message"><p>${message}</p></div>`);
@@ -20,7 +22,7 @@ $(document).ready(function() {
 
         let loaderId = `loader-${Date.now()}`;
         chatBox.append(`
-            <div class="message assistant-message" id="${loaderId}" style="margin: 10px 0; padding: 10px;">
+            <div class="message assistant-message" id="${loaderId}">
                 <div class="response-content">
                     <p>Dame unos segundos que estoy creando tu respuesta...<span class="loading-dots"></span></p>
                 </div>
@@ -28,9 +30,9 @@ $(document).ready(function() {
             </div>
         `);
 
-        chatBox.scrollTop(chatBox[0].scrollHeight); // Desplazar al final después de añadir el loader
+        // Aquí evitamos que el chat se desplace automáticamente desplazando el contenedor al mismo lugar
+        chatBox.scrollTop(previousScrollHeight);
 
-        // Esta es la funcion de los dots animados.
         function animateDots() {
             let dots = '';
             return setInterval(() => {
@@ -66,14 +68,13 @@ $(document).ready(function() {
                 let formattedResponse = addLineBreaks(cleanedResponse);
 
                 // Añadimos la respuesta
-                $(`#${loaderId}`).css({'margin-top': '10px', 'margin-bottom': '10px', 'padding': '15px'}).find('.response-content').html(formattedResponse);
+                $(`#${loaderId} .response-content`).html(formattedResponse);
 
                 // Añadimos el tiempo de respuesta
-                $(`#${loaderId}`).find('.response-time').text(`Tiempo de respuesta: ${responseTime} segundos`);
+                $(`#${loaderId} .response-time`).text(`Tiempo de respuesta: ${responseTime} segundos`);
 
-                // Desplazar al inicio del nuevo mensaje para que se vea desde el principio
-                let newMessage = document.getElementById(loaderId);
-                newMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Solo desplazamos cuando la respuesta está completamente cargada
+                chatBox.scrollTop(chatBox[0].scrollHeight);
             },
             error: function(xhr, status, error) {
                 timers.forEach(clearTimeout);
@@ -82,9 +83,8 @@ $(document).ready(function() {
                 $(`#${loaderId} .response-content`).html(`<p>Hubo un error al procesar tu solicitud.</p>`);
                 $(`#${loaderId} .response-time`).text('');
 
-                // Desplazar al inicio del nuevo mensaje para que se vea desde el principio
-                let newMessage = document.getElementById(loaderId);
-                newMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // En caso de error, desplazamos al final
+                chatBox.scrollTop(chatBox[0].scrollHeight);
 
                 console.error("Error en la solicitud AJAX:", status, error);
             }
@@ -98,7 +98,7 @@ $(document).ready(function() {
     function addLineBreaks(text) {
         text = text.replace(/\.\s{2,}/g, '.<br><br>');
         text = text.replace(/\.\s/g, '.<br>');
-        text = text.replace(/(<br>|^)([-\d]+\.\s)/gm, '$1&nbsp;&nbsp;$2');
+        text = text.replace(/(<br>|^)([-\d]+\.?\s)/gm, '$1&nbsp;&nbsp;$2');
         return text;
     }
 
