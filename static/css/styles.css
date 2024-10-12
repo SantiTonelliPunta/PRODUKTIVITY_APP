@@ -29,6 +29,7 @@ body {
 
 header {
     text-align: center;
+    margin-top: 10px;
     padding: 0px 0; /* Reduced from 20px 0 */
     border-radius: 8.5px 8.5px 0 0; /* Reduced by 15% from 10px 10px 0 0 */
     background-color: var(--background-color);
@@ -53,6 +54,7 @@ h1 {
 
 p {
     color: var(--text-color);
+    line-height: 15px;
 }
 
 .intro {
