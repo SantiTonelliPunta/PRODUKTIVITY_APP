@@ -12,6 +12,8 @@ from sklearn.preprocessing import normalize
 from sklearn.metrics import precision_score, recall_score, ndcg_score
 from sklearn.metrics.pairwise import cosine_similarity
 from utils.evaluation_metrics import evaluate_and_save_metrics
+import csv
+from datetime import datetime
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -83,6 +85,7 @@ def calcular_ndcg(y_true, y_score):
     logging.info(f"NDCG calculado: {ndcg:.4f}")
     return ndcg
 
+
 def calcular_recall(y_true, y_pred):
     recall = recall_score(y_true, y_pred, average='binary')
     logging.info(f"Recall calculado: {recall:.4f}")
@@ -92,6 +95,14 @@ def calcular_cosine_similarity(embedding1, embedding2):
     cosine_sim = cosine_similarity([embedding1], [embedding2])[0][0]
     logging.info(f"Cosine Similarity calculado: {cosine_sim:.4f}")
     return cosine_sim
+
+def save_qa_to_csv(question, answer, csv_file='qa_history.csv'):
+    file_exists = os.path.isfile(csv_file)
+    with open(csv_file, mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(['Timestamp', 'Question', 'Answer'])
+        writer.writerow([datetime.now(), question, answer])
 
 def evaluar_query(query, ground_truth):
     logging.info(f"Evaluando query: {query} con ground_truth: {ground_truth}")
@@ -131,10 +142,9 @@ def evaluar_query(query, ground_truth):
         "coherence": coherence
     }
 
-# System Prompt Adjustment Function
 def ajustar_system_prompt(prompt):
     # Instructions for handling general queries
-    prompt += "\n- Si la consulta del usuario indica una solicitud de ayuda general (por ejemplo, '¿En qué me podrías ayudar?'), ofrece una respuesta aclarando tus capacidades y solicita al usuario especificar la ayuda deseada. Ejemplo: \"Puedo ayudarte con el análisis de reseñas de productos en Amazon, proporcionando insights para mejorar la experiencia del cliente o el desarrollo de productos. ¿En qué área específica deseas que te ayude?\".\n"
+    prompt += "\n- Si la consulta del usuario indica una solicitud de ayuda general (por ejemplo, '¿En qué me podrías ayudar?'), ofrece una respuesta aclarando tus capacidades y solicita al usuario especificar la ayuda deseada. Nunca Concatenes esta respuesta con otras. Ejemplo: \"Puedo ayudarte con el análisis de reseñas de productos en Amazon, proporcionando insights para mejorar la experiencia del cliente o el desarrollo de productos. ¿En qué área específica deseas que te ayude?\".\n"
     
     # Add specific instructions to handle ambiguous queries
     prompt += "\n\nProcedimiento de Interacción:\n"
@@ -143,6 +153,10 @@ def ajustar_system_prompt(prompt):
     # Reinforce reliance on context
     prompt += "\nRefuerzo de Instrucciones:\n"
     prompt += "- Si la consulta del usuario es demasiado ambigua o general, indica que necesitas más información. Ejemplo: \"No tengo suficiente información para responder a esta pregunta. Por favor, proporciona más detalles\".\n"
+    
+    # Reinforce reliance on context
+    prompt += "\nRefuerzo de Instrucciones:\n"
+    prompt += "- Si la consulta del usuario tiene sesgo de algun tipo y o incentiva a generar respuestas impropias debes generar una respuesta acorde sin extralimitarte. Ejemplo: \" Este tipo de cuestiones no aportan a la busqueda, optimizacion y creacion de nuevos productos. ¿Porqué no pensamos una pregunta más objetiva?\".\n"
     
     return prompt
 
@@ -159,6 +173,7 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
         respuesta = "Hola, ¿en qué puedo ayudarte hoy con respecto a la búsqueda y análisis de productos?"
         total_duration = time.time() - start_time
         evaluate_and_save_metrics(query, respuesta, documentos_relevantes, total_duration)
+        save_qa_to_csv(query, respuesta)
         return format_response(respuesta, total_duration), total_duration
 
     prompt = ajustar_system_prompt(f"""
@@ -268,7 +283,7 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
         ],
         # Hyperparameters to optimize response generation
         'max_tokens': 500,
-        'temperature': 0.5,
+        'temperature': 0.,
         'top_p': 0.8,
         'frequency_penalty': 0.5,
         'presence_penalty': 0.5
@@ -287,6 +302,7 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
         # Check if the response has the expected structure
         if 'choices' in respuesta and len(respuesta['choices']) > 0 and 'message' in respuesta['choices'][0]:
             respuesta_texto = respuesta['choices'][0]['message']['content']
+            save_qa_to_csv(query, respuesta_texto)
         else:
             raise ValueError("La respuesta de la API no tiene la estructura esperada")
         
@@ -304,6 +320,7 @@ async def generar_respuesta_y_analizar_sentimiento(query, documentos_relevantes_
         error_message = f"Lo siento, ocurrió un error al procesar tu consulta: {str(e)}"
         total_duration = time.time() - start_time
         evaluate_and_save_metrics(query, error_message, documentos_relevantes, total_duration)
+        save_qa_to_csv(query, error_message)
         return format_response(error_message, total_duration), total_duration
 
 def format_response(response_text, duration):
@@ -357,17 +374,14 @@ async def procesar_consulta_async(query):
 def procesar_consulta(query):
     return asyncio.run(procesar_consulta_async(query))
 
-# Example Usage of Adjusted System Prompt
-prompt = """
-    Eres un asistente multilingüe especializado en análisis de reseñas de productos Amazon para empresas B2B en España y mercados internacionales.
-    Contexto: Utiliza el corpus de reseñas y embeddings en /embeddings/1000_embeddings_store.csv.
-    Objetivos:
+# Exportar funciones necesarias para main.py
+__all__ = ['procesar_consulta', 'evaluar_query']
 
-    Proporcionar insights estratégicos para desarrollo de productos e inteligencia de mercado.
-    Transformar el análisis de reseñas en una herramienta valiosa para la toma de decisiones.
-
-    ...
-"""
-
-prompt_ajustado = ajustar_system_prompt(prompt)
-print(prompt_ajustado)  # To check how the adjusted prompt looks
+# Código de prueba
+if __name__ == "__main__":
+    print("Probando rag_system.py")
+    query = "¿Cuál es el mejor producto?"
+    resultado, tiempo = procesar_consulta(query)
+    print(f"Consulta: {query}")
+    print(f"Respuesta: {resultado}")
+    print(f"Tiempo de procesamiento: {tiempo} segundos")

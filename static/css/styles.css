@@ -17,7 +17,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .container {
@@ -39,7 +39,7 @@ header {
     width: 490px;
     height: 103px; /* Reduced by 15% from 122px */
     display: block;
-    margin: 0px auto 10px; /* Reduced top margin from 40px to 20px, added bottom margin */
+    margin: 0px auto 10px; 
     object-fit: contain;
 }
 
@@ -54,7 +54,7 @@ h1 {
 
 p {
     color: var(--text-color);
-    line-height: 15px;
+    line-height: 1.5;
 }
 
 .intro {

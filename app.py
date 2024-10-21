@@ -1,4 +1,4 @@
-# main.py
+# app.py
 import os
 import sys
 
@@ -52,6 +52,16 @@ def chat():
     except Exception as e:
         logging.error(f"Error al procesar la consulta: {str(e)}")
         return jsonify({"error": "Ocurrió un error al procesar la consulta."}), 500
+
+@app.route("/history", methods=["GET"])
+def get_history():
+    try:
+        with open('qa_history.csv', 'r', encoding='utf-8') as file:
+            history = file.read()
+        return jsonify({"history": history})
+    except Exception as e:
+        logging.error(f"Error al obtener el historial: {str(e)}")
+        return jsonify({"error": "Ocurrió un error al obtener el historial."}), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

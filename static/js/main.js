@@ -46,10 +46,10 @@ $(document).ready(function() {
         }
 
         let timers = [
-            setTimeout(() => updateWaitMessage("Estoy analizando varias opciones."), 2000),
-            setTimeout(() => updateWaitMessage("Vamos a darle otro enfoque."), 6000),
-            setTimeout(() => updateWaitMessage("Esta es una pregunta compleja."), 9000),
-            setTimeout(() => updateWaitMessage("Lo siento pero se me está haciendo muy largo, esto no es normal"), 12000)
+            setTimeout(() => updateWaitMessage("Estoy analizando varias opciones."), 4000),
+            setTimeout(() => updateWaitMessage("Vamos a darle otro enfoque."), 8000),
+            setTimeout(() => updateWaitMessage("Esta es una pregunta compleja."), 11000),
+            setTimeout(() => updateWaitMessage("Lo siento pero se me está haciendo muy largo, esto no es normal"), 18000)
         ];
 
         // Solicitud AJAX
